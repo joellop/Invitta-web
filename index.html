@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +9,9 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
 
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -67,22 +70,28 @@
       opacity: 0;
       transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     .pull-up.in-view {
       transform: translateY(0);
       opacity: 1;
     }
   </style>
 </head>
-<body class="bg-[#080808] text-[#F4EBD9] antialiased selection:bg-[#D4AF37]/30 selection:text-[#F4EBD9] overflow-x-hidden">
+
+<body
+  class="bg-[#080808] text-[#F4EBD9] antialiased selection:bg-[#D4AF37]/30 selection:text-[#F4EBD9] overflow-x-hidden">
 
   <!-- SECCIÓN 1: PORTADA PRINCIPAL -->
   <section class="h-screen min-h-[700px] p-3 sm:p-5 md:p-6 flex flex-col">
-    <div class="relative flex-1 rounded-2xl md:rounded-[2.5rem] overflow-hidden border border-white/5 flex flex-col justify-between p-6 sm:p-10 md:p-14">
-      
+    <div
+      class="relative flex-1 rounded-2xl md:rounded-[2.5rem] overflow-hidden border border-white/5 flex flex-col justify-between p-6 sm:p-10 md:p-14">
+
       <!-- Video de Fondo -->
       <div class="absolute inset-0 z-0">
         <video autoPlay loop muted playsInline class="w-full h-full object-cover filter brightness-75 contrast-125">
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-liquid-gold-flowing-abstract-background-41484-large.mp4" type="video/mp4" />
+          <source
+            src="https://assets.mixkit.co/videos/preview/mixkit-liquid-gold-flowing-abstract-background-41484-large.mp4"
+            type="video/mp4" />
         </video>
         <div class="absolute inset-0 bg-gradient-to-t from-[#080808] via-black/40 to-black/70 z-10"></div>
         <div class="absolute inset-0 noise-overlay opacity-40 mix-blend-overlay pointer-events-none z-10"></div>
@@ -91,10 +100,15 @@
       <!-- Menú de Navegación -->
       <header class="relative z-20 w-full flex justify-center">
         <nav class="glass-card rounded-full px-5 py-2.5 flex items-center gap-4 sm:gap-8 md:gap-10 shadow-2xl">
-          <a href="#por-que-elegirnos" class="text-[11px] uppercase tracking-[0.2em] text-[#F4EBD9]/70 hover:text-gold transition-colors">Beneficios</a>
-          <a href="#que-incluye" class="text-[11px] uppercase tracking-[0.2em] text-[#F4EBD9]/70 hover:text-gold transition-colors">¿Qué incluye?</a>
-          <a href="#eventos" class="text-[11px] uppercase tracking-[0.2em] text-[#F4EBD9]/70 hover:text-gold transition-colors">Eventos</a>
-          <a href="demo-boda.html" target="_blank" class="text-[10px] uppercase tracking-widest bg-gold/10 text-gold border border-gold/30 px-3 py-1 rounded-full hover:bg-gold hover:text-black transition-all">Ver Demo</a>
+          <a href="#por-que-elegirnos"
+            class="text-[11px] uppercase tracking-[0.2em] text-[#F4EBD9]/70 hover:text-gold transition-colors">Beneficios</a>
+          <a href="#que-incluye"
+            class="text-[11px] uppercase tracking-[0.2em] text-[#F4EBD9]/70 hover:text-gold transition-colors">¿Qué
+            incluye?</a>
+          <a href="#eventos"
+            class="text-[11px] uppercase tracking-[0.2em] text-[#F4EBD9]/70 hover:text-gold transition-colors">Modelos</a>
+          <a href="#paquetes"
+            class="text-[11px] uppercase tracking-[0.2em] text-[#F4EBD9]/70 hover:text-gold transition-colors">Precios</a>
         </nav>
       </header>
 
@@ -103,23 +117,28 @@
         <div class="lg:col-span-8 flex flex-col">
           <div class="mb-2">
             <span class="text-gold tracking-[0.3em] uppercase text-xs sm:text-sm font-light flex items-center gap-2">
-              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Invitaciones Digitales Animadas
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Invitaciones Digitales Interactivas
             </span>
           </div>
-          <h1 class="pull-up text-[20vw] sm:text-[17vw] md:text-[15vw] leading-[0.8] tracking-[-0.05em] font-light text-champagne select-none">
+          <h1
+            class="pull-up text-[20vw] sm:text-[17vw] md:text-[15vw] leading-[0.8] tracking-[-0.05em] font-light text-champagne select-none">
             INVITTA<span class="text-gold text-[0.4em] align-top ml-2">✦</span>
           </h1>
         </div>
 
         <div class="lg:col-span-4 flex flex-col gap-5">
-          <p class="pull-up text-champagne/80 text-xs sm:text-sm md:text-base leading-relaxed font-light" style="transition-delay: 150ms;">
-            Diseñamos invitaciones web modernas para bodas, XV años y fiestas. Tus invitados abren su sobre interactivo con música, confirman asistencia por WhatsApp y ven la ruta del salón con un solo clic.
+          <p class="pull-up text-champagne/80 text-xs sm:text-sm md:text-base leading-relaxed font-light"
+            style="transition-delay: 150ms;">
+            Diseñamos invitaciones web modernas para bodas, XV años y fiestas. Tus invitados abren su sobre interactivo
+            con música, confirman asistencia por WhatsApp y ven la ruta del salón con un solo clic.
           </p>
 
           <div class="pull-up" style="transition-delay: 300ms;">
-            <a href="demo-boda.html" target="_blank" class="group inline-flex items-center justify-between gap-4 bg-champagne hover:bg-gold text-black rounded-full pl-6 pr-2 py-2 transition-all duration-300 shadow-gold-glow hover:gap-6 font-medium text-xs sm:text-sm uppercase tracking-wider">
-              <span>Toca para ver una muestra</span>
-              <div class="w-9 h-9 rounded-full bg-black text-champagne group-hover:text-gold flex items-center justify-center transition-transform group-hover:scale-110">
+            <a href="#paquetes"
+              class="group inline-flex items-center justify-between gap-4 bg-champagne hover:bg-gold text-black rounded-full pl-6 pr-2 py-2 transition-all duration-300 shadow-gold-glow hover:gap-6 font-medium text-xs sm:text-sm uppercase tracking-wider">
+              <span>Explorar Planes y Demos</span>
+              <div
+                class="w-9 h-9 rounded-full bg-black text-champagne group-hover:text-gold flex items-center justify-center transition-transform group-hover:scale-110">
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
               </div>
             </a>
@@ -132,8 +151,11 @@
 
   <!-- SECCIÓN 2: BENEFICIOS PRÁCTICOS -->
   <section id="por-que-elegirnos" class="py-24 sm:py-36 px-4 sm:px-8 max-w-6xl mx-auto">
-    <div class="bg-[#111111] border border-white/5 rounded-3xl p-8 sm:p-16 md:p-20 text-center relative overflow-hidden shadow-2xl">
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div
+      class="bg-[#111111] border border-white/5 rounded-3xl p-8 sm:p-16 md:p-20 text-center relative overflow-hidden shadow-2xl">
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none">
+      </div>
 
       <span class="text-gold text-[11px] tracking-[0.35em] uppercase font-semibold block mb-6">
         OLVÍDATE DEL PAPEL Y LOS MENSAJES COMPLICADOS
@@ -141,12 +163,16 @@
 
       <div class="max-w-4xl mx-auto mb-8 text-3xl sm:text-5xl md:text-6xl font-light space-y-2">
         <div class="pull-up text-champagne/90 font-light">Las tarjetas impresas terminan en la basura.</div>
-        <div class="pull-up font-serif italic text-gold font-normal" style="transition-delay: 100ms;">Una web interactiva la llevan siempre en el celular.</div>
-        <div class="pull-up text-champagne font-normal" style="transition-delay: 200ms;">Fácil de enviar a todos tus contactos por WhatsApp.</div>
+        <div class="pull-up font-serif italic text-gold font-normal" style="transition-delay: 100ms;">Una web
+          interactiva la llevan siempre en el celular.</div>
+        <div class="pull-up text-champagne font-normal" style="transition-delay: 200ms;">Fácil de enviar a todos tus
+          contactos por WhatsApp.</div>
       </div>
 
-      <p class="pull-up max-w-2xl mx-auto text-[#9E9C94] text-sm sm:text-base md:text-lg font-light leading-relaxed" style="transition-delay: 300ms;">
-        Ahorra tiempo y dinero repartiendo invitaciones físicas. Con un enlace personalizado tus invitados tienen a mano los horarios, el mapa en tiempo real, tu mesa de regalos y un botón para avisarte si asistirán.
+      <p class="pull-up max-w-2xl mx-auto text-[#9E9C94] text-sm sm:text-base md:text-lg font-light leading-relaxed"
+        style="transition-delay: 300ms;">
+        Ahorra tiempo y presupuesto en imprentas. Con un solo enlace personalizado tus invitados consultan los horarios,
+        abren el mapa GPS, revisan tu mesa de regalos y confirman su pase en segundos.
       </p>
     </div>
   </section>
@@ -158,254 +184,407 @@
         ¿Qué incluye tu invitación digital?
       </h2>
       <p class="text-gold font-serif italic text-lg sm:text-2xl">
-        Todo lo que necesitas para organizar tu fiesta sin estrés.
+        Todo lo necesario para una organización impecable y sin llamadas repetitivas.
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-      
-      <!-- Tarjeta 1: Sobre Virtual con Música -->
-      <div class="pull-up bg-[#111111] border border-white/5 hover:border-gold/30 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 group hover:shadow-gold-glow">
+
+      <!-- Tarjeta 1: Sobre Virtual -->
+      <div
+        class="pull-up bg-[#111111] border border-white/5 hover:border-gold/30 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 group hover:shadow-gold-glow">
         <div>
           <div class="flex justify-between items-center mb-6">
-            <div class="w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
+            <div
+              class="w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
               <i data-lucide="sparkles" class="w-5 h-5"></i>
             </div>
             <span class="text-[10px] tracking-widest uppercase text-gray-500 font-mono">01</span>
           </div>
-          <h3 class="text-lg font-serif text-champagne mb-2">Sobre Virtual con Música</h3>
+          <h3 class="text-lg font-serif text-champagne mb-2">Sobre Virtual & Animación</h3>
           <p class="text-xs text-[#9E9C94] mb-6 leading-relaxed">
-            La primera impresión de tu evento con una experiencia táctil y animada en el celular.
+            Una apertura táctil con sello que despliega la tarjeta y activa la melodía del evento.
           </p>
           <ul class="space-y-3 text-xs text-[#9E9C94]">
             <li class="flex items-start gap-2">
               <i data-lucide="check" class="w-3.5 h-3.5 text-gold shrink-0 mt-0.5"></i>
-              <span>Sello de lacre interactivo que se abre al tacto</span>
+              <span>Sello con iniciales o monograma</span>
             </li>
             <li class="flex items-start gap-2">
               <i data-lucide="check" class="w-3.5 h-3.5 text-gold shrink-0 mt-0.5"></i>
-              <span>Canción o melodía de fondo automática</span>
+              <span>Canción de fondo con control de audio</span>
             </li>
             <li class="flex items-start gap-2">
               <i data-lucide="check" class="w-3.5 h-3.5 text-gold shrink-0 mt-0.5"></i>
-              <span>Diseño adaptado 100% a la pantalla del móvil</span>
+              <span>Adaptación fluida para cualquier smartphone</span>
             </li>
           </ul>
         </div>
-        <div class="pt-6 border-t border-white/5 mt-6">
-          <a href="demo-boda.html" target="_blank" class="inline-flex items-center gap-1 text-xs text-champagne/80 hover:text-gold transition-colors">
-            <span>Ver ejemplo en vivo</span>
-            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-          </a>
-        </div>
       </div>
 
-      <!-- Tarjeta 2: Confirmación por WhatsApp -->
-      <div class="pull-up bg-[#111111] border border-white/5 hover:border-gold/30 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 group hover:shadow-gold-glow" style="transition-delay: 100ms;">
+      <!-- Tarjeta 2: Confirmación WhatsApp -->
+      <div
+        class="pull-up bg-[#111111] border border-white/5 hover:border-gold/30 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 group hover:shadow-gold-glow"
+        style="transition-delay: 100ms;">
         <div>
           <div class="flex justify-between items-center mb-6">
-            <div class="w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
+            <div
+              class="w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
               <i data-lucide="message-circle" class="w-5 h-5"></i>
             </div>
             <span class="text-[10px] tracking-widest uppercase text-gray-500 font-mono">02</span>
           </div>
           <h3 class="text-lg font-serif text-champagne mb-2">Confirmación por WhatsApp</h3>
           <p class="text-xs text-[#9E9C94] mb-6 leading-relaxed">
-            Tus invitados te avisan con un botón si asistirán o no, sin llamadas ni mensajes desordenados.
+            Tus invitados notifican su asistencia sin fricciones y el mensaje llega ordenado a tu chat.
           </p>
           <ul class="space-y-3 text-xs text-[#9E9C94]">
             <li class="flex items-start gap-2">
               <i data-lucide="check" class="w-3.5 h-3.5 text-gold shrink-0 mt-0.5"></i>
-              <span>El mensaje llega directo a tu WhatsApp</span>
+              <span>Notificación directa al teléfono anfitrión</span>
             </li>
             <li class="flex items-start gap-2">
               <i data-lucide="check" class="w-3.5 h-3.5 text-gold shrink-0 mt-0.5"></i>
-              <span>Controlas cuántos pases tiene cada persona</span>
+              <span>Control exacto del conteo de pases</span>
             </li>
             <li class="flex items-start gap-2">
               <i data-lucide="check" class="w-3.5 h-3.5 text-gold shrink-0 mt-0.5"></i>
-              <span>Opción para que elijan su tipo de platillo</span>
+              <span>Registro opcional de alergias o menús</span>
             </li>
           </ul>
         </div>
-        <div class="pt-6 border-t border-white/5 mt-6">
-          <a href="#contacto" class="inline-flex items-center gap-1 text-xs text-champagne/80 hover:text-gold transition-colors">
-            <span>Pedir información</span>
-            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-          </a>
-        </div>
       </div>
 
-      <!-- Tarjeta 3: Ubicación y Mesa de Regalos -->
-      <div class="pull-up bg-[#111111] border border-white/5 hover:border-gold/30 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 group hover:shadow-gold-glow" style="transition-delay: 200ms;">
+      <!-- Tarjeta 3: Ubicación y Regalos -->
+      <div
+        class="pull-up bg-[#111111] border border-white/5 hover:border-gold/30 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 group hover:shadow-gold-glow"
+        style="transition-delay: 200ms;">
         <div>
           <div class="flex justify-between items-center mb-6">
-            <div class="w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
+            <div
+              class="w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
               <i data-lucide="map-pin" class="w-5 h-5"></i>
             </div>
             <span class="text-[10px] tracking-widest uppercase text-gray-500 font-mono">03</span>
           </div>
-          <h3 class="text-lg font-serif text-champagne mb-2">Ubicación y Mesa de Regalos</h3>
+          <h3 class="text-lg font-serif text-champagne mb-2">GPS y Mesa de Regalos</h3>
           <p class="text-xs text-[#9E9C94] mb-6 leading-relaxed">
-            Evita que tus invitados se pierdan en el camino o tengan dudas sobre qué regalarte.
+            Rutas directas para evitar extravíos y accesos limpios a listas de obsequios o datos bancarios.
           </p>
           <ul class="space-y-3 text-xs text-[#9E9C94]">
             <li class="flex items-start gap-2">
               <i data-lucide="check" class="w-3.5 h-3.5 text-gold shrink-0 mt-0.5"></i>
-              <span>Botón para abrir la ruta en Google Maps y Waze</span>
+              <span>Botón a Google Maps, Waze y Uber</span>
             </li>
             <li class="flex items-start gap-2">
               <i data-lucide="check" class="w-3.5 h-3.5 text-gold shrink-0 mt-0.5"></i>
-              <span>Enlace a tiendas departamentales o cuenta bancaria</span>
+              <span>Enlaces a tiendas o CLABE para transferencias</span>
             </li>
             <li class="flex items-start gap-2">
               <i data-lucide="check" class="w-3.5 h-3.5 text-gold shrink-0 mt-0.5"></i>
-              <span>Cuenta regresiva con los días y horas que faltan</span>
+              <span>Cuenta regresiva automática por fecha y hora</span>
             </li>
           </ul>
         </div>
-        <div class="pt-6 border-t border-white/5 mt-6">
-          <a href="#contacto" class="inline-flex items-center gap-1 text-xs text-champagne/80 hover:text-gold transition-colors">
-            <span>Pedir información</span>
-            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-          </a>
-        </div>
       </div>
 
-      <!-- Tarjeta 4: Horarios y Código de Vestimenta -->
-      <div class="pull-up bg-[#111111] border border-white/5 hover:border-gold/30 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 group hover:shadow-gold-glow" style="transition-delay: 300ms;">
+      <!-- Tarjeta 4: Horarios y Vestimenta -->
+      <div
+        class="pull-up bg-[#111111] border border-white/5 hover:border-gold/30 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 group hover:shadow-gold-glow"
+        style="transition-delay: 300ms;">
         <div>
           <div class="flex justify-between items-center mb-6">
-            <div class="w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
+            <div
+              class="w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
               <i data-lucide="clock" class="w-5 h-5"></i>
             </div>
             <span class="text-[10px] tracking-widest uppercase text-gray-500 font-mono">04</span>
           </div>
-          <h3 class="text-lg font-serif text-champagne mb-2">Horarios y Código de Vestimenta</h3>
+          <h3 class="text-lg font-serif text-champagne mb-2">Cronograma y Vestimenta</h3>
           <p class="text-xs text-[#9E9C94] mb-6 leading-relaxed">
-            Explica con claridad el desarrollo del evento para que todos lleguen a tiempo y con la ropa adecuada.
+            Organización paso a paso para que tus invitados lleguen a tiempo y con la etiqueta adecuada.
           </p>
           <ul class="space-y-3 text-xs text-[#9E9C94]">
             <li class="flex items-start gap-2">
               <i data-lucide="check" class="w-3.5 h-3.5 text-gold shrink-0 mt-0.5"></i>
-              <span>Itinerario claro: ceremonia, brindis, comida y baile</span>
+              <span>Horarios: ceremonia, cóctel, cena y baile</span>
             </li>
             <li class="flex items-start gap-2">
               <i data-lucide="check" class="w-3.5 h-3.5 text-gold shrink-0 mt-0.5"></i>
-              <span>Paleta de colores sugerida o ejemplos de vestimenta</span>
+              <span>Paleta de colores sugerida o restringida</span>
             </li>
             <li class="flex items-start gap-2">
               <i data-lucide="check" class="w-3.5 h-3.5 text-gold shrink-0 mt-0.5"></i>
-              <span>Muro con tus mejores fotos o historia del festejo</span>
+              <span>Galería fotográfica de los anfitriones</span>
             </li>
           </ul>
-        </div>
-        <div class="pt-6 border-t border-white/5 mt-6">
-          <a href="#contacto" class="inline-flex items-center gap-1 text-xs text-champagne/80 hover:text-gold transition-colors">
-            <span>Pedir información</span>
-            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-          </a>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- SECCIÓN 4: MODELOS SEGÚN EL EVENTO -->
+  <!-- SECCIÓN 4: MODELOS DISPONIBLES -->
   <section id="eventos" class="py-24 px-4 sm:px-6 md:px-10 max-w-7xl mx-auto border-t border-white/5">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-      <div>
-        <span class="text-gold uppercase tracking-[0.25em] text-xs font-semibold block mb-2">Modelos Disponibles</span>
-        <h2 class="text-3xl sm:text-5xl font-serif text-champagne">Invitaciones para cada ocasión</h2>
-      </div>
-      <p class="text-xs sm:text-sm text-[#9E9C94] max-w-md mt-4 md:mt-0 font-light">
-        Toca en cualquier modelo para ver la invitación interactiva completa tal como la recibirán tus invitados.
-      </p>
+    <div class="mb-12">
+      <span class="text-gold uppercase tracking-[0.25em] text-xs font-semibold block mb-2">Catálogo de Eventos</span>
+      <h2 class="text-3xl sm:text-5xl font-serif text-champagne">Modelos Disponibles</h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      
-      <!-- Evento 1: Bodas -->
-      <div class="group relative rounded-2xl overflow-hidden bg-[#111111] border border-white/5 hover:border-gold/40 transition-all duration-500 flex flex-col justify-between">
+
+      <!-- Modelo 1: Bodas -->
+      <div
+        class="group relative rounded-2xl overflow-hidden bg-[#111111] border border-white/5 hover:border-gold/40 transition-all duration-500 flex flex-col justify-between">
         <div class="relative h-64 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200&auto=format&fit=crop" alt="Invitación para Boda" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90">
-          <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-champagne border border-white/10 flex items-center gap-1">
-            <i data-lucide="clock" class="w-3 h-3 text-gold"></i> Lista en 48 horas
-          </div>
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200&auto=format&fit=crop"
+            alt="Invitación para Boda"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90">
         </div>
         <div class="p-6">
           <h3 class="font-serif text-2xl text-champagne mb-1">Bodas y Aniversarios</h3>
-          <p class="text-xs text-[#9E9C94] mb-4">Diseño romántico con horarios de iglesia y recepción, hoteles cercanos recomendados y mesa de regalos.</p>
-          <div class="flex justify-end items-center pt-4 border-t border-white/5">
-            <a href="demo-boda.html" target="_blank" class="text-xs text-champagne/70 group-hover:text-gold flex items-center gap-1 transition-colors">
-              Ver Demo en Vivo <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-            </a>
-          </div>
+          <p class="text-xs text-[#9E9C94] leading-relaxed">Diseño romántico con horarios de iglesia y recepción,
+            hoteles cercanos recomendados y mesa de regalos.</p>
         </div>
       </div>
 
-      <!-- Evento 2: Cumpleaños y XV Años -->
-      <div class="group relative rounded-2xl overflow-hidden bg-[#111111] border border-white/5 hover:border-gold/40 transition-all duration-500 flex flex-col justify-between">
+      <!-- Modelo 2: Cumpleaños y XV Años -->
+      <div
+        class="group relative rounded-2xl overflow-hidden bg-[#111111] border border-white/5 hover:border-gold/40 transition-all duration-500 flex flex-col justify-between">
         <div class="relative h-64 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=1200&auto=format&fit=crop" alt="Invitación para XV Años y Cumpleaños" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90">
-          <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-champagne border border-white/10 flex items-center gap-1">
-            <i data-lucide="clock" class="w-3 h-3 text-gold"></i> Lista en 24 a 48 horas
-          </div>
+          <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=1200&auto=format&fit=crop"
+            alt="Invitación para XV Años y Cumpleaños"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90">
         </div>
         <div class="p-6">
           <h3 class="font-serif text-2xl text-champagne mb-1">XV Años y Cumpleaños</h3>
-          <p class="text-xs text-[#9E9C94] mb-4">Animaciones llamativas adaptadas al tema de tu fiesta, tu canción preferida, cuenta regresiva y fotos.</p>
-          <div class="flex justify-end items-center pt-4 border-t border-white/5">
-            <a href="demo-xv.html" target="_blank" class="text-xs text-champagne/70 group-hover:text-gold flex items-center gap-1 transition-colors">
-              Ver Demo en Vivo <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-            </a>
-          </div>
+          <p class="text-xs text-[#9E9C94] leading-relaxed">Animaciones llamativas adaptadas al tema de tu fiesta, tu
+            canción preferida, cuenta regresiva y fotos.</p>
         </div>
       </div>
 
-      <!-- Evento 3: Fiestas Privadas y Bautizos -->
-      <div class="group relative rounded-2xl overflow-hidden bg-[#111111] border border-white/5 hover:border-gold/40 transition-all duration-500 flex flex-col justify-between">
+      <!-- Modelo 3: Graduaciones y Fiestas -->
+      <div
+        class="group relative rounded-2xl overflow-hidden bg-[#111111] border border-white/5 hover:border-gold/40 transition-all duration-500 flex flex-col justify-between">
         <div class="relative h-64 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop" alt="Invitación para Fiestas Privadas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90">
-          <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-champagne border border-white/10 flex items-center gap-1">
-            <i data-lucide="clock" class="w-3 h-3 text-gold"></i> Entrega Rápida
-          </div>
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop"
+            alt="Invitación para Fiestas Privadas"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90">
         </div>
         <div class="p-6">
           <h3 class="font-serif text-2xl text-champagne mb-1">Graduaciones y Fiestas</h3>
-          <p class="text-xs text-[#9E9C94] mb-4">Pase digital con código QR para recepción en puerta, indicaciones del lugar y aviso de confirmación.</p>
-          <div class="flex justify-end items-center pt-4 border-t border-white/5">
-            <a href="demo-fiesta.html" target="_blank" class="text-xs text-champagne/70 group-hover:text-gold flex items-center gap-1 transition-colors">
-              Ver Demo en Vivo <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-            </a>
-          </div>
+          <p class="text-xs text-[#9E9C94] leading-relaxed">Pase digital con código QR para recepción en puerta,
+            indicaciones del lugar y aviso de confirmación.</p>
         </div>
       </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN 5: PAQUETES CON SELECTOR DE DEMOS -->
+  <section id="paquetes" class="py-24 px-4 sm:px-6 md:px-10 max-w-7xl mx-auto border-t border-white/5">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="text-gold uppercase tracking-[0.25em] text-xs font-semibold block mb-2">Planes Claros & Demos
+        Reales</span>
+      <h2 class="text-3xl sm:text-5xl font-serif text-champagne mb-4">Elige tu Paquete</h2>
+      <p class="text-xs sm:text-sm text-[#9E9C94] font-light">
+        Selecciona tu tipo de evento en cada paquete para ver exactamente qué demo interactiva le corresponde.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+
+<!-- PAQUETE 1: ESENCIAL -->
+    <div class="bg-[#111111] border border-white/5 hover:border-gold hover:shadow-gold-glow rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300">
+      <div>
+        <span class="text-xs text-gray-400 uppercase tracking-widest font-mono block mb-1">Básico</span>
+        <h3 class="font-serif text-2xl text-champagne mb-2">Esencial</h3>
+        <p class="text-xs text-[#9E9C94] mb-6 leading-relaxed">
+          La alternativa digital directa para sustituir el cartón impreso sin perder elegancia.
+        </p>
+        
+        <div class="mb-6 pb-6 border-b border-white/5">
+          <span class="text-xs text-gray-400">Pago único</span>
+          <div class="text-3xl font-serif text-champagne font-bold mt-1">$490 <span class="text-xs font-sans font-normal text-gray-400">MXN</span></div>
+        </div>
+
+        <ul class="space-y-3 text-xs text-[#9E9C94] mb-8">
+          <li class="flex items-center gap-2 text-champagne">
+            <i data-lucide="check" class="w-4 h-4 text-gold shrink-0"></i> Sobre digital con animación táctil
+          </li>
+          <li class="flex items-center gap-2 text-champagne">
+            <i data-lucide="check" class="w-4 h-4 text-gold shrink-0"></i> Cuenta regresiva dinámica
+          </li>
+          <li class="flex items-center gap-2 text-champagne">
+            <i data-lucide="check" class="w-4 h-4 text-gold shrink-0"></i> Botón de enlace a Google Maps
+          </li>
+          <li class="flex items-center gap-2 text-champagne">
+            <i data-lucide="check" class="w-4 h-4 text-gold shrink-0"></i> Especificación de código de vestimenta
+          </li>
+          <li class="flex items-center gap-2 text-champagne">
+            <i data-lucide="check" class="w-4 h-4 text-gold shrink-0"></i> Botón básico para avisar por WhatsApp
+          </li>
+          <li class="flex items-center gap-2 text-gray-600 line-through">
+            <i data-lucide="x" class="w-4 h-4 text-gray-700 shrink-0"></i> Sin melodía de fondo
+          </li>
+          <li class="flex items-center gap-2 text-gray-600 line-through">
+            <i data-lucide="x" class="w-4 h-4 text-gray-700 shrink-0"></i> Sin galería de fotos
+          </li>
+        </ul>
+      </div>
+
+      <div class="pt-6 border-t border-white/5 space-y-3">
+        <label class="block text-[10px] uppercase tracking-wider text-gray-400 font-mono">Probar demo según tu evento:</label>
+        <div class="flex gap-2">
+          <select class="package-select bg-[#1a1a1a] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-gold outline-none flex-1" data-plan="esencial">
+            <option value="demo-boda.html">Bodas & Aniversarios</option>
+            <option value="demo-xv.html">XV Años & Cumpleaños</option>
+            <option value="demo-fiesta.html">Graduaciones & Fiestas</option>
+          </select>
+          <a href="demo-boda.html?plan=esencial" target="_blank" class="package-demo-link p-2 bg-white/5 hover:bg-gold hover:text-black text-gold rounded-xl border border-white/10 flex items-center justify-center transition-colors" title="Abrir Demo">
+            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <a href="https://wa.me/?text=Hola%20Invitta,%20me%20interesa%20contratar%20el%20Paquete%20Esencial" target="_blank" class="w-full py-2.5 rounded-full border border-white/10 hover:border-gold text-xs uppercase tracking-widest text-champagne hover:text-gold block text-center transition-all mt-2">
+          Contratar Esencial
+        </a>
+      </div>
+    </div>
+
+    <!-- PAQUETE 2: SIGNATURE -->
+    <div class="bg-[#111111] border border-white/5 hover:border-gold hover:shadow-gold-glow rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300">
+      <div>
+        <span class="text-xs text-gray-400 uppercase tracking-widest font-mono block mb-1">Completo</span>
+        <h3 class="font-serif text-2xl text-champagne mb-2">Signature</h3>
+        <p class="text-xs text-[#9E9C94] mb-6 leading-relaxed">
+          La experiencia integral preferida para Bodas y XV Años con música, fotos y confirmación RSVP.
+        </p>
+        
+        <div class="mb-6 pb-6 border-b border-white/5">
+          <span class="text-xs text-gray-400">Pago único</span>
+          <div class="text-3xl font-serif text-champagne font-bold mt-1">$890 <span class="text-xs font-sans font-normal text-gray-400">MXN</span></div>
+        </div>
+
+        <ul class="space-y-3 text-xs text-[#9E9C94] mb-8">
+          <li class="flex items-center gap-2 text-champagne font-medium">
+            <i data-lucide="check" class="w-4 h-4 text-gold shrink-0"></i> Todo lo del paquete Esencial
+          </li>
+          <li class="flex items-center gap-2 text-champagne">
+            <i data-lucide="check" class="w-4 h-4 text-gold shrink-0"></i> Melodía o canción de fondo a tu elección
+          </li>
+          <li class="flex items-center gap-2 text-champagne">
+            <i data-lucide="check" class="w-4 h-4 text-gold shrink-0"></i> Galería fotográfica integrada
+          </li>
+          <li class="flex items-center gap-2 text-champagne">
+            <i data-lucide="check" class="w-4 h-4 text-gold shrink-0"></i> Formulario estructurado de pases a WhatsApp
+          </li>
+          <li class="flex items-center gap-2 text-champagne">
+            <i data-lucide="check" class="w-4 h-4 text-gold shrink-0"></i> Mesa de regalos (enlaces y CLABE copiable)
+          </li>
+          <li class="flex items-center gap-2 text-champagne">
+            <i data-lucide="check" class="w-4 h-4 text-gold shrink-0"></i> Botones a Google Maps, Waze y Uber
+          </li>
+        </ul>
+      </div>
+
+      <div class="pt-6 border-t border-white/5 space-y-3">
+        <label class="block text-[10px] uppercase tracking-wider text-gray-400 font-mono">Probar demo según tu evento:</label>
+        <div class="flex gap-2">
+          <select class="package-select bg-[#1a1a1a] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-gold outline-none flex-1" data-plan="signature">
+            <option value="demo-boda.html">Bodas & Aniversarios</option>
+            <option value="demo-xv.html">XV Años & Cumpleaños</option>
+            <option value="demo-fiesta.html">Graduaciones & Fiestas</option>
+          </select>
+          <a href="demo-boda.html?plan=signature" target="_blank" class="package-demo-link p-2 bg-white/5 hover:bg-gold hover:text-black text-gold rounded-xl border border-white/10 flex items-center justify-center transition-colors" title="Abrir Demo">
+            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <a href="https://wa.me/?text=Hola%20Invitta,%20me%20interesa%20contratar%20el%20Paquete%20Signature" target="_blank" class="w-full py-2.5 rounded-full border border-white/10 hover:border-gold text-xs uppercase tracking-widest text-champagne hover:text-gold block text-center transition-all mt-2">
+          Contratar Signature
+        </a>
+      </div>
+    </div>
+
+    <!-- PAQUETE 3: ALL-INCLUSIVE VIP -->
+    <div class="bg-[#111111] border border-white/5 hover:border-gold hover:shadow-gold-glow rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300">
+      <div>
+        <span class="text-xs text-gray-400 uppercase tracking-widest font-mono block mb-1">Exclusivo</span>
+        <h3 class="font-serif text-2xl text-champagne mb-2">All-Inclusive VIP</h3>
+        <p class="text-xs text-[#9E9C94] mb-6 leading-relaxed">
+          Para eventos de alto estándar con pases QR de recepción en puerta y múltiples locaciones.
+        </p>
+        
+        <div class="mb-6 pb-6 border-b border-white/5">
+          <span class="text-xs text-gray-400">Pago único</span>
+          <div class="text-3xl font-serif text-champagne font-bold mt-1">$1,290 <span class="text-xs font-sans font-normal text-gray-400">MXN</span></div>
+        </div>
+
+        <ul class="space-y-3 text-xs text-[#9E9C94] mb-8">
+          <li class="flex items-center gap-2 text-champagne font-medium">
+            <i data-lucide="check" class="w-4 h-4 text-gold shrink-0"></i> Todo lo del paquete Signature
+          </li>
+          <li class="flex items-center gap-2 text-champagne">
+            <i data-lucide="check" class="w-4 h-4 text-gold shrink-0"></i> Pase digital con Código QR de acceso
+          </li>
+          <li class="flex items-center gap-2 text-champagne">
+            <i data-lucide="check" class="w-4 h-4 text-gold shrink-0"></i> Múltiples sedes (iglesia, cóctel y salón)
+          </li>
+          <li class="flex items-center gap-2 text-champagne">
+            <i data-lucide="check" class="w-4 h-4 text-gold shrink-0"></i> Itinerario cronológico por bloques
+          </li>
+          <li class="flex items-center gap-2 text-champagne">
+            <i data-lucide="check" class="w-4 h-4 text-gold shrink-0"></i> Lista de hoteles recomendados y tarifas
+          </li>
+          <li class="flex items-center gap-2 text-champagne">
+            <i data-lucide="check" class="w-4 h-4 text-gold shrink-0"></i> Entrega exprés prioritaria
+          </li>
+        </ul>
+      </div>
+
+      <div class="pt-6 border-t border-white/5 space-y-3">
+        <label class="block text-[10px] uppercase tracking-wider text-gray-400 font-mono">Probar demo según tu evento:</label>
+        <div class="flex gap-2">
+          <select class="package-select bg-[#1a1a1a] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-gold outline-none flex-1" data-plan="vip">
+            <option value="demo-fiesta.html">Graduaciones & Fiestas</option>
+            <option value="demo-boda.html">Bodas & Aniversarios</option>
+            <option value="demo-xv.html">XV Años & Cumpleaños</option>
+          </select>
+          <a href="demo-fiesta.html?plan=vip" target="_blank" class="package-demo-link p-2 bg-white/5 hover:bg-gold hover:text-black text-gold rounded-xl border border-white/10 flex items-center justify-center transition-colors" title="Abrir Demo">
+            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <a href="https://wa.me/?text=Hola%20Invitta,%20me%20interesa%20contratar%20el%20Paquete%20All-Inclusive%20VIP" target="_blank" class="w-full py-2.5 rounded-full border border-white/10 hover:border-gold text-xs uppercase tracking-widest text-champagne hover:text-gold block text-center transition-all mt-2">
+          Contratar VIP
+        </a>
+      </div>
+    </div>
 
     </div>
   </section>
 
   <!-- PIE DE PÁGINA -->
-  <footer id="contacto" class="border-t border-white/10 py-12 px-6 sm:px-12 flex flex-col sm:flex-row justify-between items-center gap-6 text-xs text-[#9E9C94]">
+  <footer id="contacto"
+    class="border-t border-white/10 py-12 px-6 sm:px-12 flex flex-col sm:flex-row justify-between items-center gap-6 text-xs text-[#9E9C94]">
     <div class="flex items-center gap-2">
       <span class="text-gold font-serif text-xl tracking-wider">INVITTA</span>
-      <span class="text-[10px] uppercase tracking-widest text-gray-500">© 2026 INVITTA. Invitaciones Digitales para Eventos.</span>
+      <span class="text-[10px] uppercase tracking-widest text-gray-500">© 2026 INVITTA. Invitaciones Digitales para
+        Eventos.</span>
     </div>
     <div class="flex gap-6 uppercase tracking-wider text-[10px]">
       <a href="https://wa.me/" target="_blank" class="hover:text-champagne transition-colors flex items-center gap-1">
-        <i data-lucide="message-circle" class="w-3 h-3 text-gold"></i> Escríbenos por WhatsApp
+        <i data-lucide="message-circle" class="w-3 h-3 text-gold"></i> Atención por WhatsApp
       </a>
-      <a href="#" class="hover:text-champagne transition-colors">Preguntas Frecuentes</a>
-      <a href="#" class="hover:text-champagne transition-colors">Instagram</a>
     </div>
   </footer>
 
   <!-- SCRIPT -->
   <script>
-    // Inicializar iconos de Lucide
     lucide.createIcons();
 
-    // Animación de aparición con scroll
+    // Animación al hacer scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -418,6 +597,19 @@
     });
 
     document.querySelectorAll('.pull-up').forEach(el => observer.observe(el));
+
+    // Lógica dinámica para los selectores de demo en cada paquete
+    document.querySelectorAll('.package-select').forEach(select => {
+      select.addEventListener('change', (e) => {
+        const selectedUrl = e.target.value;
+        const plan = e.target.getAttribute('data-plan') || 'signature';
+        const linkBtn = e.target.parentElement.querySelector('.package-demo-link');
+        if (linkBtn) {
+          linkBtn.href = `${selectedUrl}?plan=${plan}`;
+        }
+      });
+    });
   </script>
 </body>
+
 </html>

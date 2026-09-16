@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +9,9 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
 
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -42,33 +45,61 @@
   </script>
 
   <style>
-    * { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .serif { font-family: 'Cormorant Garamond', serif; }
+    * {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
 
     @keyframes soundwave {
-      0%, 100% { height: 4px; }
-      50% { height: 16px; }
+
+      0%,
+      100% {
+        height: 4px;
+      }
+
+      50% {
+        height: 16px;
+      }
     }
+
     .sound-bar {
       animation: soundwave 1s ease-in-out infinite alternate;
     }
   </style>
 </head>
-<body class="bg-[#090909] text-champagne antialiased selection:bg-gold/30 selection:text-white">
 
+<body class="bg-[#090909] text-champagne antialiased selection:bg-gold/30 selection:text-white">
+  <audio id="bgMusic" loop preload="auto">
+    <!-- Pista épica festiva de graduación / gala electrónica -->
+    <source
+      src="audio/gala.mp3"
+      type="audio/mp3" />
+  </audio>
   <!-- ========================================== -->
   <!-- 1. PANTALLA INICIAL: APERTURA DE ENTRADA   -->
   <!-- ========================================== -->
-  <div id="envelopeScreen" class="fixed inset-0 z-50 bg-[#060606] flex flex-col items-center justify-center p-6 text-center transition-all duration-700">
-    <div class="max-w-sm w-full bg-[#121212] border border-gold/20 rounded-3xl p-8 shadow-2xl flex flex-col items-center relative overflow-hidden">
-      
-      <div class="inline-flex items-center gap-1.5 text-gold text-[10px] tracking-[0.3em] uppercase mb-4">
+  <div id="envelopeScreen"
+    class="fixed inset-0 z-50 bg-[#060606] flex flex-col items-center justify-center p-6 text-center transition-all duration-700">
+    <div
+      class="max-w-sm w-full bg-[#121212] border border-gold/20 rounded-3xl p-8 shadow-2xl flex flex-col items-center relative overflow-hidden">
+
+      <!-- Insignia del plan activo -->
+      <div id="planBadge"
+        class="mb-4 text-[10px] text-gold uppercase tracking-[0.2em] bg-gold/10 px-3 py-1 rounded-full border border-gold/30">
+        Demo: Paquete All-Inclusive VIP
+      </div>
+
+      <div class="inline-flex items-center gap-1.5 text-gold text-[10px] tracking-[0.3em] uppercase mb-2">
         <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Pase Digital Oficial
       </div>
 
-      <!-- Sello / Credencial Táctil -->
+      <!-- Botón de apertura -->
       <button id="unsealBtn" class="relative my-6 group cursor-pointer">
-        <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-gold-light via-gold to-gold-dark flex items-center justify-center text-black font-bold text-2xl shadow-gold-glow group-hover:scale-105 transition-transform border border-yellow-200">
+        <div
+          class="w-20 h-20 rounded-2xl bg-gradient-to-br from-gold-light via-gold to-gold-dark flex items-center justify-center text-black font-bold text-2xl shadow-gold-glow group-hover:scale-105 transition-transform border border-yellow-200">
           <i data-lucide="qr-code" class="w-10 h-10 text-black"></i>
         </div>
         <div class="absolute -inset-2 rounded-2xl border border-gold/40 animate-ping"></div>
@@ -76,8 +107,9 @@
 
       <h2 class="serif text-3xl italic text-champagne mb-1">Gala de Graduación</h2>
       <p class="text-xs text-gray-400 mb-6">Toca el código para verificar y ver tu boleto</p>
-      
-      <span class="text-[10px] text-gold/90 border border-gold/30 px-3 py-1 rounded-full uppercase tracking-widest bg-gold/5">
+
+      <span
+        class="text-[10px] text-gold/90 border border-gold/30 px-3 py-1 rounded-full uppercase tracking-widest bg-gold/5">
         Generación 2022 — 2026
       </span>
     </div>
@@ -86,13 +118,15 @@
   <!-- ========================================== -->
   <!-- 2. INVITACIÓN Y PASE DIGITAL COMPLETO     -->
   <!-- ========================================== -->
-  <main id="invitationContent" class="hidden min-h-screen max-w-md mx-auto bg-[#101010] border-x border-white/5 relative pb-20 shadow-2xl">
-    
-    <!-- Barra de Estado Superior -->
-    <div class="sticky top-0 z-30 bg-[#101010]/85 backdrop-blur-md px-4 py-3 flex justify-between items-center border-b border-white/5">
+  <main id="invitationContent"
+    class="hidden min-h-screen max-w-md mx-auto bg-[#101010] border-x border-white/5 relative pb-20 shadow-2xl">
+
+    <!-- BARRA DE MÚSICA (Signature y VIP) -->
+    <div id="feature-audio"
+      class="sticky top-0 z-30 bg-[#101010]/85 backdrop-blur-md px-4 py-3 flex justify-between items-center border-b border-white/5">
       <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span class="text-[11px] text-gray-300 font-mono">ACCESO CONFIRMADO</span>
+        <div class="w-2 h-2 rounded-full bg-gold animate-pulse"></div>
+        <span class="text-[11px] text-gray-200">Coldplay — A Sky Full of Stars</span>
       </div>
       <button id="toggleMusicBtn" class="flex items-center gap-1.5 text-xs text-gold">
         <div class="flex items-end gap-0.5 h-3.5 mr-1">
@@ -100,46 +134,54 @@
           <div class="w-0.5 bg-gold rounded-full sound-bar" style="animation-delay: 0.3s;"></div>
           <div class="w-0.5 bg-gold rounded-full sound-bar" style="animation-delay: 0.2s;"></div>
         </div>
-        <span id="musicStatusText" class="text-[10px] uppercase tracking-wider">Audio On</span>
+        <span id="musicStatusText" class="text-[10px] uppercase tracking-wider">Sonando</span>
       </button>
     </div>
 
-    <!-- Encabezado del Evento -->
-    <header class="relative h-80 overflow-hidden flex flex-col justify-end p-6 text-center">
-      <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1200&auto=format&fit=crop" alt="Graduación Gala" class="absolute inset-0 w-full h-full object-cover filter brightness-[0.4] contrast-110" />
+    <!-- ENCABEZADO (Todos los paquetes) -->
+    <header class="relative h-72 overflow-hidden flex flex-col justify-end p-6 text-center">
+      <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1200&auto=format&fit=crop"
+        alt="Graduación Gala"
+        class="absolute inset-0 w-full h-full object-cover filter brightness-[0.4] contrast-110" />
       <div class="absolute inset-0 bg-gradient-to-t from-[#101010] via-transparent to-black/30"></div>
-      
+
       <div class="relative z-10">
-        <span class="text-gold text-[10px] uppercase tracking-[0.3em] font-semibold block mb-2">Celebración de Fin de Grado</span>
+        <span class="text-gold text-[10px] uppercase tracking-[0.3em] font-semibold block mb-1">Celebración de Fin de
+          Grado</span>
         <h1 class="serif text-4xl italic text-champagne mb-1">Noche de Gala 2026</h1>
         <p class="text-xs text-gray-300 font-light">Facultad de Ingeniería & Negocios</p>
       </div>
     </header>
 
-    <!-- EL PASE DIGITAL VIP CON QR (ELEMENTO CENTRAL) -->
-    <section class="p-6">
-      <div class="bg-gradient-to-b from-[#191919] to-[#121212] border border-gold/30 rounded-3xl p-6 shadow-ticket-shadow relative overflow-hidden">
-        
-        <!-- Recortes de Boleto en los laterales -->
-        <div class="absolute -left-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#101010] border-r border-gold/30"></div>
-        <div class="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#101010] border-l border-gold/30"></div>
+    <!-- EL PASE DIGITAL VIP CON QR (Solo VIP) -->
+    <section id="feature-qr" class="p-6">
+      <div
+        class="bg-gradient-to-b from-[#191919] to-[#121212] border border-gold/30 rounded-3xl p-6 shadow-ticket-shadow relative overflow-hidden">
+
+        <!-- Recortes de Boleto -->
+        <div
+          class="absolute -left-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#101010] border-r border-gold/30">
+        </div>
+        <div
+          class="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#101010] border-l border-gold/30">
+        </div>
 
         <div class="flex justify-between items-start border-b border-white/10 pb-4 mb-4">
           <div>
             <span class="text-[9px] uppercase tracking-widest text-gold font-mono block">TICKET ID</span>
             <span class="text-sm font-bold font-mono text-champagne">#GRD-8842-VIP</span>
           </div>
-          <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider font-semibold">
+          <span
+            class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider font-semibold">
             Válido en Puerta
           </span>
         </div>
 
-        <!-- Código QR -->
         <div class="flex flex-col items-center justify-center my-3">
           <div class="p-3 bg-white rounded-2xl shadow-lg border-2 border-gold">
-            <!-- QR generado en SVG -->
             <svg class="w-36 h-36" viewBox="0 0 100 100" fill="black">
-              <path d="M0 0h35v35H0V0zm5 5v25h25V5H5zm5 5h15v15H10V10zM65 0h35v35H65V0zm5 5v25h25V5H70zm5 5h15v15H75V10zM0 65h35v35H0V65zm5 5v25h25V70H5zm5 5h15v15H10V75zM45 5h10v10H45V5zm10 15h10v10H55V20zm-10 10h10v10H45V30zm20 15h10v10H65V45zm-15 10h10v10H50V55zm15 15h10v10H65V70zm15 0h10v10H80V70zm-35 15h10v10H45V85zm35 0h10v10H80V85zm5-15h10v10H85V70zm-40-25h10v10H45V45zm15 0h10v10H60V45z"/>
+              <path
+                d="M0 0h35v35H0V0zm5 5v25h25V5H5zm5 5h15v15H10V10zM65 0h35v35H65V0zm5 5v25h25V5H70zm5 5h15v15H75V10zM0 65h35v35H0V65zm5 5v25h25V70H5zm5 5h15v15H10V75zM45 5h10v10H45V5zm10 15h10v10H55V20zm-10 10h10v10H45V30zm20 15h10v10H65V45zm-15 10h10v10H50V55zm15 15h10v10H65V70zm15 0h10v10H80V70zm-35 15h10v10H45V85zm35 0h10v10H80V85zm5-15h10v10H85V70zm-40-25h10v10H45V45zm15 0h10v10H60V45z" />
             </svg>
           </div>
           <span class="text-[10px] text-gray-400 font-mono mt-3">Muestra este código al llegar a recepción</span>
@@ -159,18 +201,26 @@
       </div>
     </section>
 
-    <!-- Cuenta Regresiva -->
+    <!-- CUENTA REGRESIVA (Todos los paquetes) -->
     <section class="px-6 py-2 text-center border-b border-white/5">
       <span class="text-[10px] text-gold uppercase tracking-widest block mb-3">FALTA PARA LA GALA</span>
       <div class="grid grid-cols-4 gap-2 font-mono">
-        <div class="bg-[#161616] p-2.5 rounded-xl border border-white/5"><span class="text-lg font-bold text-champagne block">12</span><span class="text-[8px] text-gray-400 uppercase">Días</span></div>
-        <div class="bg-[#161616] p-2.5 rounded-xl border border-white/5"><span class="text-lg font-bold text-champagne block">05</span><span class="text-[8px] text-gray-400 uppercase">Horas</span></div>
-        <div class="bg-[#161616] p-2.5 rounded-xl border border-white/5"><span class="text-lg font-bold text-champagne block">18</span><span class="text-[8px] text-gray-400 uppercase">Min</span></div>
-        <div class="bg-[#161616] p-2.5 rounded-xl border border-white/5"><span class="text-lg font-bold text-champagne block">40</span><span class="text-[8px] text-gray-400 uppercase">Seg</span></div>
+        <div class="bg-[#161616] p-2.5 rounded-xl border border-white/5"><span
+            class="text-lg font-bold text-champagne block">12</span><span
+            class="text-[8px] text-gray-400 uppercase">Días</span></div>
+        <div class="bg-[#161616] p-2.5 rounded-xl border border-white/5"><span
+            class="text-lg font-bold text-champagne block">05</span><span
+            class="text-[8px] text-gray-400 uppercase">Horas</span></div>
+        <div class="bg-[#161616] p-2.5 rounded-xl border border-white/5"><span
+            class="text-lg font-bold text-champagne block">18</span><span
+            class="text-[8px] text-gray-400 uppercase">Min</span></div>
+        <div class="bg-[#161616] p-2.5 rounded-xl border border-white/5"><span
+            class="text-lg font-bold text-champagne block">40</span><span
+            class="text-[8px] text-gray-400 uppercase">Seg</span></div>
       </div>
     </section>
 
-    <!-- Indicaciones del Lugar & Estacionamiento -->
+    <!-- LUGAR & ESTACIONAMIENTO (Todos los paquetes) -->
     <section class="p-6 space-y-4 border-b border-white/5">
       <h3 class="serif text-2xl text-center italic text-gold mb-2">Lugar & Acceso Vehicular</h3>
 
@@ -186,23 +236,29 @@
         </div>
 
         <div class="p-3 bg-black/40 rounded-xl text-xs space-y-2 border border-white/5 text-[#9E9C94]">
-          <p class="flex items-center gap-2"><i data-lucide="car" class="w-3.5 h-3.5 text-gold shrink-0"></i> <strong>Valet Parking:</strong> Disponible sin costo en la entrada principal.</p>
-          <p class="flex items-center gap-2"><i data-lucide="clock" class="w-3.5 h-3.5 text-gold shrink-0"></i> <strong>Recepción:</strong> Registro de asistentes desde las 19:30 hrs.</p>
+          <p class="flex items-center gap-2"><i data-lucide="car" class="w-3.5 h-3.5 text-gold shrink-0"></i>
+            <strong>Valet Parking:</strong> Disponible sin costo en la entrada principal.
+          </p>
+          <p class="flex items-center gap-2"><i data-lucide="clock" class="w-3.5 h-3.5 text-gold shrink-0"></i>
+            <strong>Recepción:</strong> Registro de asistentes desde las 19:30 hrs.
+          </p>
         </div>
 
         <div class="grid grid-cols-2 gap-2 pt-1">
-          <a href="https://maps.google.com" target="_blank" class="py-2.5 bg-[#202020] hover:bg-gold/20 text-champagne border border-white/10 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-colors">
+          <a href="https://maps.google.com" target="_blank"
+            class="py-2.5 bg-[#202020] hover:bg-gold/20 text-champagne border border-white/10 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-colors">
             <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> Google Maps
           </a>
-          <a href="https://waze.com" target="_blank" class="py-2.5 bg-[#202020] hover:bg-gold/20 text-champagne border border-white/10 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-colors">
+          <a href="https://waze.com" target="_blank"
+            class="py-2.5 bg-[#202020] hover:bg-gold/20 text-champagne border border-white/10 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-colors">
             <i data-lucide="navigation" class="w-3.5 h-3.5 text-gold"></i> Abrir Waze
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Itinerario de la Noche -->
-    <section class="p-6 border-b border-white/5">
+    <!-- CRONOGRAMA DE LA NOCHE (Solo VIP) -->
+    <section id="feature-itinerario" class="p-6 border-b border-white/5">
       <h3 class="serif text-2xl text-center italic text-gold mb-4">Cronograma de la Noche</h3>
       <div class="space-y-3 text-xs">
         <div class="flex items-center gap-3 bg-[#161616] p-3 rounded-xl border border-white/5">
@@ -224,43 +280,50 @@
       </div>
     </section>
 
-    <!-- Código de Vestimenta -->
+    <!-- CÓDIGO DE VESTIMENTA (Todos los paquetes) -->
     <section class="p-6 text-center border-b border-white/5">
       <h3 class="serif text-2xl italic text-gold mb-1">Código de Vestimenta</h3>
-      <span class="text-sm font-semibold uppercase tracking-wider block mb-2 text-champagne">Etiqueta Rigurosa / Black Tie</span>
+      <span class="text-sm font-semibold uppercase tracking-wider block mb-2 text-champagne">Etiqueta Rigurosa / Black
+        Tie</span>
       <p class="text-xs text-gray-400 max-w-xs mx-auto">
         Caballeros: esmoquin o traje oscuro formal. Damas: vestido largo de gala.
       </p>
     </section>
 
-    <!-- Formulario de Confirmación (RSVP en Puerta) -->
+    <!-- FORMULARIO DE CONFIRMACIÓN (Adaptado según el paquete) -->
     <section class="p-6 text-center">
       <h3 class="serif text-3xl italic text-gold mb-2">Aviso de Confirmación</h3>
       <p class="text-xs text-gray-400 mb-6">Confirma tu asistencia para habilitar el pase de acceso.</p>
 
       <div class="bg-[#161616] border border-white/10 rounded-2xl p-5 text-left space-y-4 shadow-lg">
         <div>
-          <label class="block text-[11px] text-gray-400 uppercase tracking-wider mb-1">Nombre Completo del Asistente</label>
-          <input id="guestName" type="text" placeholder="Ej. Lic. Fernando Morales" class="w-full bg-[#101010] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-gold outline-none" />
+          <label class="block text-[11px] text-gray-400 uppercase tracking-wider mb-1">Nombre Completo del
+            Asistente</label>
+          <input id="guestName" type="text" placeholder="Ej. Lic. Fernando Morales"
+            class="w-full bg-[#101010] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-gold outline-none" />
         </div>
 
         <div>
           <label class="block text-[11px] text-gray-400 uppercase tracking-wider mb-1">Estado de Asistencia</label>
-          <select id="guestAttendance" class="w-full bg-[#101010] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-gold outline-none">
+          <select id="guestAttendance"
+            class="w-full bg-[#101010] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-gold outline-none">
             <option value="si">Confirmar mi pase y asistencia</option>
             <option value="no">Ceder / Cancelar pase</option>
           </select>
         </div>
 
-        <div>
+        <!-- Selector de pases (Oculto en Esencial, activo en Signature y VIP) -->
+        <div id="feature-pases">
           <label class="block text-[11px] text-gray-400 uppercase tracking-wider mb-1">Pases Requeridos</label>
-          <select id="guestTickets" class="w-full bg-[#101010] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-gold outline-none">
+          <select id="guestTickets"
+            class="w-full bg-[#101010] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-gold outline-none">
             <option value="1">1 Pase (Personal)</option>
             <option value="2" selected>2 Pases (Con acompañante)</option>
           </select>
         </div>
 
-        <button id="sendWhatsAppRSVP" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-95 cursor-pointer">
+        <button id="sendWhatsAppRSVP"
+          class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-95 cursor-pointer">
           <i data-lucide="message-circle" class="w-4 h-4"></i> Enviar Confirmación por WhatsApp
         </button>
       </div>
@@ -268,20 +331,57 @@
 
   </main>
 
-  <!-- SCRIPT -->
+  <!-- ========================================== -->
+  <!-- 3. SCRIPT: FILTRADO DINÁMICO POR PLAN       -->
+  <!-- ========================================== -->
   <script>
     lucide.createIcons();
 
+    // 1. Leer parámetro de la URL (?plan=esencial / signature / vip)
+    const urlParams = new URLSearchParams(window.location.search);
+    const plan = (urlParams.get('plan') || 'vip').toLowerCase();
+
+    // 2. Elementos a ocultar o mostrar según el plan
+    const featureAudio = document.getElementById('feature-audio');
+    const featureQr = document.getElementById('feature-qr');
+    const featureItinerario = document.getElementById('feature-itinerario');
+    const featurePases = document.getElementById('feature-pases');
+    const planBadge = document.getElementById('planBadge');
+
+    const bgMusic = document.getElementById('bgMusic');
+
+    if (plan === 'esencial') {
+      planBadge.textContent = 'Demo: Paquete Esencial';
+      if (featureAudio) featureAudio.classList.add('hidden');
+      if (featureQr) featureQr.classList.add('hidden');
+      if (featureItinerario) featureItinerario.classList.add('hidden');
+      if (featurePases) featurePases.classList.add('hidden');
+    } else if (plan === 'signature') {
+      planBadge.textContent = 'Demo: Paquete Signature';
+      // Mantiene audio y pases; oculta el QR de puerta y el cronograma detallado
+      if (featureQr) featureQr.classList.add('hidden');
+      if (featureItinerario) featureItinerario.classList.add('hidden');
+    } else if (plan === 'vip') {
+      planBadge.textContent = 'Demo: Paquete All-Inclusive VIP';
+      // Muestra todo (incluyendo el código QR y el cronograma de la noche)
+    }
+
+    // Lógica del sobre/pase inicial
     const envelopeScreen = document.getElementById('envelopeScreen');
     const unsealBtn = document.getElementById('unsealBtn');
     const invitationContent = document.getElementById('invitationContent');
     const toggleMusicBtn = document.getElementById('toggleMusicBtn');
     const musicStatusText = document.getElementById('musicStatusText');
-    let isMusicPlaying = true;
+    let isMusicPlaying = plan !== 'esencial';
 
-    // Desbloquear Pase Digital
     unsealBtn.addEventListener('click', () => {
       envelopeScreen.classList.add('opacity-0', 'pointer-events-none');
+
+      if (plan !== 'esencial' && bgMusic) {
+        bgMusic.volume = 0.65;
+        bgMusic.play().catch(err => console.log("Audio en espera:", err));
+      }
+
       setTimeout(() => {
         envelopeScreen.classList.add('hidden');
         invitationContent.classList.remove('hidden');
@@ -289,22 +389,36 @@
       }, 500);
     });
 
-    // Control de música
-    toggleMusicBtn.addEventListener('click', () => {
-      isMusicPlaying = !isMusicPlaying;
-      musicStatusText.textContent = isMusicPlaying ? 'Audio On' : 'Muted';
-      toggleMusicBtn.classList.toggle('opacity-50', !isMusicPlaying);
-    });
+    if (toggleMusicBtn) {
+      toggleMusicBtn.addEventListener('click', () => {
+        if (bgMusic.paused) {
+          bgMusic.play();
+          isMusicPlaying = true;
+          musicStatusText.textContent = 'Audio On';
+          toggleMusicBtn.classList.remove('opacity-50');
+        } else {
+          bgMusic.pause();
+          isMusicPlaying = false;
+          musicStatusText.textContent = 'Muted';
+          toggleMusicBtn.classList.add('opacity-50');
+        }
+      });
+    }
 
-    // Envío de WhatsApp para registro
+    // Envío de WhatsApp
     document.getElementById('sendWhatsAppRSVP').addEventListener('click', () => {
       const name = document.getElementById('guestName').value.trim() || 'Graduado/Invitado';
-      const attendance = document.getElementById('guestAttendance').value === 'si' ? 'Confirmo asistencia al Pase #GRD-8842-VIP' : 'No podré asistir a la gala';
-      const tickets = document.getElementById('guestTickets').value;
-      
-      const message = `¡Hola! Soy ${name}. ${attendance} para la Gala de Graduación 2026. Pases requeridos: ${tickets}. Favor de validar el acceso QR.`;
+      const attendance = document.getElementById('guestAttendance').value === 'si'
+        ? 'Confirmo asistencia al evento'
+        : 'No podré asistir a la gala';
+      const tickets = featurePases && !featurePases.classList.contains('hidden')
+        ? ` (${document.getElementById('guestTickets').value} pases requeridos)`
+        : '';
+
+      const message = `¡Hola! Soy ${name}. ${attendance} para la Gala de Graduación 2026${tickets}.`;
       window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
     });
   </script>
 </body>
+
 </html>

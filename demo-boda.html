@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +9,9 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
 
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -40,30 +43,57 @@
   </script>
 
   <style>
-    * { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .serif { font-family: 'Cormorant Garamond', serif; }
-    
-    @keyframes soundwave {
-      0%, 100% { height: 4px; }
-      50% { height: 16px; }
+    * {
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
+
+    .serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    @keyframes soundwave {
+
+      0%,
+      100% {
+        height: 4px;
+      }
+
+      50% {
+        height: 16px;
+      }
+    }
+
     .sound-bar {
       animation: soundwave 1s ease-in-out infinite alternate;
     }
   </style>
 </head>
-<body class="bg-[#0c0c0c] text-champagne antialiased selection:bg-gold/30 selection:text-champagne">
 
+<body class="bg-[#0c0c0c] text-champagne antialiased selection:bg-gold/30 selection:text-champagne">
+  <audio id="bgMusic" loop preload="auto">
+    <!-- Pista instrumental/acústica romántica -->
+    <source
+      src="audio/boda.mp3"
+      type="audio/mp3" />
+  </audio>
   <!-- ========================================== -->
-  <!-- 1. PANTALLA INICIAL: SOBRE VIRTUAL CERRADO -->
+  <!-- 1. PANTALLA INICIAL: SOBRE VIRTUAL         -->
   <!-- ========================================== -->
-  <div id="envelopeScreen" class="fixed inset-0 z-50 bg-[#080808] flex flex-col items-center justify-center p-6 text-center transition-all duration-700">
-    <div class="max-w-sm w-full bg-[#121212] border border-white/10 rounded-3xl p-8 shadow-2xl flex flex-col items-center">
-      <span class="text-gold text-[10px] tracking-[0.3em] uppercase mb-4">Invitación de Boda</span>
-      
-      <!-- Sello de lacre virtual con animación -->
+  <div id="envelopeScreen"
+    class="fixed inset-0 z-50 bg-[#080808] flex flex-col items-center justify-center p-6 text-center transition-all duration-700">
+    <div
+      class="max-w-sm w-full bg-[#121212] border border-white/10 rounded-3xl p-8 shadow-2xl flex flex-col items-center">
+
+      <!-- Insignia del plan activo -->
+      <div id="planBadge"
+        class="mb-4 text-[10px] text-gold uppercase tracking-[0.2em] bg-gold/10 px-3 py-1 rounded-full border border-gold/30">
+        Demo: Paquete Signature
+      </div>
+
+      <!-- Sello de lacre virtual -->
       <button id="unsealBtn" class="relative my-6 group cursor-pointer">
-        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-gold-light via-gold to-gold-dark flex items-center justify-center text-black font-serif font-bold text-2xl shadow-gold-glow group-hover:scale-105 transition-transform border border-yellow-200">
+        <div
+          class="w-20 h-20 rounded-full bg-gradient-to-br from-gold-light via-gold to-gold-dark flex items-center justify-center text-black font-serif font-bold text-2xl shadow-gold-glow group-hover:scale-105 transition-transform border border-yellow-200">
           S & M
         </div>
         <div class="absolute -inset-2 rounded-full border border-gold/40 animate-ping"></div>
@@ -71,7 +101,7 @@
 
       <h2 class="serif text-3xl italic text-champagne mb-1">Sofía & Mateo</h2>
       <p class="text-xs text-gray-400 mb-6">Toca el sello para abrir la invitación</p>
-      
+
       <span class="text-[10px] text-gold/80 border border-gold/20 px-3 py-1 rounded-full uppercase tracking-widest">
         24 de Octubre, 2026
       </span>
@@ -81,10 +111,12 @@
   <!-- ========================================== -->
   <!-- 2. INVITACIÓN REAL COMPLETA                -->
   <!-- ========================================== -->
-  <main id="invitationContent" class="hidden min-h-screen max-w-md mx-auto bg-[#101010] border-x border-white/5 relative pb-20">
-    
-    <!-- Barra flotante de audio -->
-    <div class="sticky top-0 z-30 bg-[#101010]/80 backdrop-blur-md px-4 py-3 flex justify-between items-center border-b border-white/5">
+  <main id="invitationContent"
+    class="hidden min-h-screen max-w-md mx-auto bg-[#101010] border-x border-white/5 relative pb-20">
+
+    <!-- BARRA DE AUDIO (Solo Signature y VIP) -->
+    <div id="feature-audio"
+      class="sticky top-0 z-30 bg-[#101010]/80 backdrop-blur-md px-4 py-3 flex justify-between items-center border-b border-white/5">
       <div class="flex items-center gap-2">
         <div class="w-2 h-2 rounded-full bg-gold animate-pulse"></div>
         <span class="text-[11px] text-gray-300 italic serif">Can't Help Falling In Love</span>
@@ -99,11 +131,12 @@
       </button>
     </div>
 
-    <!-- Portada de la pareja -->
-    <header class="relative h-[480px] overflow-hidden flex flex-col justify-end p-6 text-center">
-      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" alt="Sofía y Mateo" class="absolute inset-0 w-full h-full object-cover filter brightness-[0.65]" />
+    <!-- PORTADA (Todos los paquetes) -->
+    <header class="relative h-[440px] overflow-hidden flex flex-col justify-end p-6 text-center">
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop"
+        alt="Sofía y Mateo" class="absolute inset-0 w-full h-full object-cover filter brightness-[0.65]" />
       <div class="absolute inset-0 bg-gradient-to-t from-[#101010] via-transparent to-black/30"></div>
-      
+
       <div class="relative z-10">
         <span class="text-gold text-[10px] uppercase tracking-[0.3em] font-semibold block mb-2">Nos Casamos</span>
         <h1 class="serif text-5xl italic text-champagne mb-2">Sofía & Mateo</h1>
@@ -111,7 +144,7 @@
       </div>
     </header>
 
-    <!-- Cuenta Regresiva -->
+    <!-- CUENTA REGRESIVA (Todos los paquetes) -->
     <section class="p-6 text-center border-b border-white/5">
       <span class="text-[10px] text-gold uppercase tracking-widest block mb-4">FALTAN PARA EL GRAN DÍA</span>
       <div class="grid grid-cols-4 gap-2 font-mono">
@@ -134,7 +167,7 @@
       </div>
     </section>
 
-    <!-- Ubicaciones (Ceremonia y Fiesta) -->
+    <!-- UBICACIÓN Y HORARIOS (Todos los paquetes) -->
     <section class="p-6 space-y-4 border-b border-white/5">
       <h3 class="serif text-2xl text-center italic text-gold mb-6">Dónde & Cuándo</h3>
 
@@ -149,34 +182,36 @@
             <span class="text-xs text-gold">17:00 hrs</span>
           </div>
         </div>
-        <p class="text-xs text-gray-400 mb-4">Parroquia de San Jerónimo • Calle Real #102, Centro Histórico.</p>
-        <a href="https://maps.google.com" target="_blank" class="w-full py-2 bg-[#222] hover:bg-gold/20 text-champagne border border-white/10 rounded-xl text-xs flex items-center justify-center gap-2 transition-colors">
+        <p class="text-xs text-gray-400 mb-4">Parroquia de San Jerónimo • Centro Histórico.</p>
+        <a href="https://maps.google.com" target="_blank"
+          class="w-full py-2 bg-[#222] hover:bg-gold/20 text-champagne border border-white/10 rounded-xl text-xs flex items-center justify-center gap-2 transition-colors">
           <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> Abrir en Google Maps
         </a>
       </div>
 
-      <!-- Salón / Recepción -->
+      <!-- Salón (Separado en VIP, unificado en los demás) -->
       <div class="bg-[#161616] border border-white/5 rounded-2xl p-5">
         <div class="flex items-center gap-3 mb-2">
           <div class="w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center">
             <i data-lucide="glass-water" class="w-4 h-4"></i>
           </div>
           <div>
-            <h4 class="font-semibold text-sm">Recepción & Banquete</h4>
+            <h4 class="font-semibold text-sm">Recepción & Fiesta</h4>
             <span class="text-xs text-gold">19:00 hrs</span>
           </div>
         </div>
-        <p class="text-xs text-gray-400 mb-4">Hacienda Santa Mónica • Jardín Principal, Carretera Norte Km 4.</p>
-        <a href="https://maps.google.com" target="_blank" class="w-full py-2 bg-[#222] hover:bg-gold/20 text-champagne border border-white/10 rounded-xl text-xs flex items-center justify-center gap-2 transition-colors">
+        <p class="text-xs text-gray-400 mb-4">Hacienda Santa Mónica • Jardín Principal.</p>
+        <a href="https://maps.google.com" target="_blank"
+          class="w-full py-2 bg-[#222] hover:bg-gold/20 text-champagne border border-white/10 rounded-xl text-xs flex items-center justify-center gap-2 transition-colors">
           <i data-lucide="navigation" class="w-3.5 h-3.5 text-gold"></i> Abrir en Waze / Uber
         </a>
       </div>
     </section>
 
-    <!-- Itinerario del Día -->
-    <section class="p-6 border-b border-white/5">
-      <h3 class="serif text-2xl text-center italic text-gold mb-6">Itinerario</h3>
-      <div class="space-y-4 text-xs">
+    <!-- CRONOGRAMA POR FASES (Solo VIP) -->
+    <section id="feature-itinerario" class="p-6 border-b border-white/5">
+      <h3 class="serif text-2xl text-center italic text-gold mb-6">Itinerario Detallado</h3>
+      <div class="space-y-3 text-xs">
         <div class="flex items-center gap-4 bg-[#141414] p-3 rounded-xl border border-white/5">
           <span class="font-mono text-gold font-semibold w-16">17:00 h</span>
           <span>Misa de Matrimonio</span>
@@ -196,25 +231,80 @@
       </div>
     </section>
 
-    <!-- Código de Vestimenta -->
+    <!-- CORTE DE HONOR & PADRINOS (Signature y VIP) -->
+    <section id="feature-padrinos" class="p-6 border-b border-white/5">
+      <div class="text-center mb-6">
+        <span class="text-[10px] text-gold uppercase tracking-[0.25em] font-semibold block mb-1">Corte de Honor</span>
+        <h3 class="serif text-2xl italic text-champagne">Nuestros Padrinos</h3>
+        <p class="text-xs text-gray-400 font-light mt-1">Personas especiales que nos acompañan y bendicen este nuevo
+          inicio.</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 text-xs">
+        <!-- Padrinos de Velación -->
+        <div class="bg-[#161616] border border-white/5 rounded-2xl p-4 text-center">
+          <div class="w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center mx-auto mb-2">
+            <i data-lucide="flame" class="w-4 h-4"></i>
+          </div>
+          <span class="text-[9px] uppercase tracking-widest text-gold block font-mono">Velación</span>
+          <p class="font-semibold text-champagne mt-0.5">Carlos Herrera</p>
+          <p class="text-[11px] text-gray-400">& Mariana Soto</p>
+        </div>
+
+        <!-- Padrinos de Anillos -->
+        <div class="bg-[#161616] border border-white/5 rounded-2xl p-4 text-center">
+          <div class="w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center mx-auto mb-2">
+            <i data-lucide="gem" class="w-4 h-4"></i>
+          </div>
+          <span class="text-[9px] uppercase tracking-widest text-gold block font-mono">Anillos</span>
+          <p class="font-semibold text-champagne mt-0.5">Rodrigo Valenzuela</p>
+          <p class="text-[11px] text-gray-400">& Andrea Castillo</p>
+        </div>
+
+        <!-- Padrinos de Arras -->
+        <div class="bg-[#161616] border border-white/5 rounded-2xl p-4 text-center">
+          <div class="w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center mx-auto mb-2">
+            <i data-lucide="coins" class="w-4 h-4"></i>
+          </div>
+          <span class="text-[9px] uppercase tracking-widest text-gold block font-mono">Arras</span>
+          <p class="font-semibold text-champagne mt-0.5">Lic. Esteban Cruz</p>
+          <p class="text-[11px] text-gray-400">& Elena Morales</p>
+        </div>
+
+        <!-- Padrinos de Lazo -->
+        <div class="bg-[#161616] border border-white/5 rounded-2xl p-4 text-center">
+          <div class="w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center mx-auto mb-2">
+            <i data-lucide="infinity" class="w-4 h-4"></i>
+          </div>
+          <span class="text-[9px] uppercase tracking-widest text-gold block font-mono">Lazo</span>
+          <p class="font-semibold text-champagne mt-0.5">Sebastián Navarro</p>
+          <p class="text-[11px] text-gray-400">& Daniela Flores</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓDIGO DE VESTIMENTA (Todos los paquetes) -->
     <section class="p-6 text-center border-b border-white/5">
       <h3 class="serif text-2xl italic text-gold mb-2">Código de Vestimenta</h3>
       <span class="text-sm font-semibold uppercase tracking-wider block mb-2 text-champagne">Rigurosa Etiqueta</span>
-      <p class="text-xs text-gray-400 max-w-xs mx-auto mb-4">Hombres de traje oscuro o esmoquin. Mujeres con vestido largo de noche.</p>
-      
+      <p class="text-xs text-gray-400 max-w-xs mx-auto mb-4">Hombres de traje oscuro o esmoquin. Mujeres con vestido
+        largo de noche.</p>
+
       <div class="flex justify-center items-center gap-2 text-[11px] text-gray-400">
         <span class="w-3 h-3 rounded-full bg-white inline-block"></span>
         <span>El color blanco está reservado para la novia.</span>
       </div>
     </section>
 
-    <!-- Mesa de Regalos -->
-    <section class="p-6 border-b border-white/5">
+    <!-- MESA DE REGALOS (Solo Signature y VIP) -->
+    <section id="feature-regalos" class="p-6 border-b border-white/5">
       <h3 class="serif text-2xl text-center italic text-gold mb-4">Mesa de Regalos</h3>
-      <p class="text-xs text-center text-gray-400 mb-6">Tu presencia es nuestro mayor regalo, pero si deseas tener un detalle con nosotros:</p>
-      
+      <p class="text-xs text-center text-gray-400 mb-6">Tu presencia es nuestro mejor regalo, pero si deseas hacernos un
+        obsequio:</p>
+
       <div class="space-y-3">
-        <a href="https://www.liverpool.com.mx" target="_blank" class="flex justify-between items-center p-4 bg-[#161616] border border-white/5 rounded-2xl hover:border-gold/30 transition-all text-xs">
+        <a href="https://www.liverpool.com.mx" target="_blank"
+          class="flex justify-between items-center p-4 bg-[#161616] border border-white/5 rounded-2xl hover:border-gold/30 transition-all text-xs">
           <div class="flex items-center gap-3">
             <i data-lucide="gift" class="w-4 h-4 text-gold"></i>
             <div>
@@ -228,30 +318,32 @@
         <div class="p-4 bg-[#161616] border border-white/5 rounded-2xl text-xs">
           <div class="flex items-center gap-3 mb-2">
             <i data-lucide="credit-card" class="w-4 h-4 text-gold"></i>
-            <p class="font-semibold text-champagne">Lluvia de Sobres / Transferencia</p>
+            <p class="font-semibold text-champagne">Transferencia Bancaria</p>
           </div>
-          <p class="text-[11px] text-gray-400 mb-1">BBVA Bancomer • Sofía Valenzuela</p>
+          <p class="text-[11px] text-gray-400 mb-1">BBVA • Sofía Valenzuela</p>
           <div class="flex justify-between items-center bg-black/50 p-2 rounded-lg font-mono text-[11px] text-gold">
             <span>012 180 0156 8942 3312</span>
-            <button onclick="navigator.clipboard.writeText('012180015689423312'); alert('¡CLABE copiada!');" class="text-[10px] text-gray-300 hover:text-white underline cursor-pointer">Copiar</button>
+            <button onclick="navigator.clipboard.writeText('012180015689423312'); alert('¡CLABE copiada!');"
+              class="text-[10px] text-gray-300 hover:text-white underline cursor-pointer">Copiar</button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Hoteles Cercanos Recomendados -->
-    <section class="p-6 border-b border-white/5">
+    <!-- HOTELES RECOMENDADOS (Solo VIP) -->
+    <section id="feature-hoteles" class="p-6 border-b border-white/5">
       <h3 class="serif text-2xl text-center italic text-gold mb-2">Hospedaje Recomendado</h3>
       <p class="text-xs text-center text-gray-400 mb-4">Para nuestros invitados que viajan de fuera:</p>
-      
+
       <div class="bg-[#161616] border border-white/5 rounded-2xl p-4 text-xs">
         <p class="font-semibold text-champagne">Hotel Quinta Real Grand</p>
         <p class="text-[11px] text-gray-400 mb-2">A 8 minutos del salón de eventos.</p>
-        <span class="inline-block text-[10px] text-gold bg-gold/10 px-2.5 py-1 rounded-full">Código de descuento: BODA-SOFIA</span>
+        <span class="inline-block text-[10px] text-gold bg-gold/10 px-2.5 py-1 rounded-full">Tarifa especial:
+          BODA-SOFIA</span>
       </div>
     </section>
 
-    <!-- Formulario de Confirmación (RSVP) -->
+    <!-- FORMULARIO DE CONFIRMACIÓN (Se adapta según el paquete) -->
     <section class="p-6 text-center">
       <h3 class="serif text-3xl italic text-gold mb-2">Confirmación de Asistencia</h3>
       <p class="text-xs text-gray-400 mb-6">Agradecemos confirmar antes del 30 de Septiembre.</p>
@@ -259,27 +351,24 @@
       <div class="bg-[#161616] border border-white/10 rounded-2xl p-5 text-left space-y-4">
         <div>
           <label class="block text-[11px] text-gray-400 uppercase tracking-wider mb-1">Nombre Completo</label>
-          <input id="guestName" type="text" placeholder="Ej. Familia Gómez Herrera" class="w-full bg-[#101010] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-gold outline-none" />
+          <input id="guestName" type="text" placeholder="Ej. Familia Gómez Herrera"
+            class="w-full bg-[#101010] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-gold outline-none" />
         </div>
 
-        <div>
-          <label class="block text-[11px] text-gray-400 uppercase tracking-wider mb-1">¿Nos acompañas?</label>
-          <select id="guestAttendance" class="w-full bg-[#101010] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-gold outline-none">
-            <option value="si">¡Sí, ahí estaré / estaremos!</option>
-            <option value="no">Lamentablemente no podré asistir</option>
-          </select>
-        </div>
-
-        <div>
-          <label class="block text-[11px] text-gray-400 uppercase tracking-wider mb-1">Número de pases que usarás</label>
-          <select id="guestTickets" class="w-full bg-[#101010] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-gold outline-none">
+        <!-- Campos de pases y platillo (Ocultos en Esencial, activos en Signature y VIP) -->
+        <div id="feature-pases">
+          <label class="block text-[11px] text-gray-400 uppercase tracking-wider mb-1">Número de pases que
+            usarás</label>
+          <select id="guestTickets"
+            class="w-full bg-[#101010] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-gold outline-none">
             <option value="1">1 Persona</option>
             <option value="2" selected>2 Personas</option>
             <option value="3">3 Personas</option>
           </select>
         </div>
 
-        <button id="sendWhatsAppRSVP" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-95 cursor-pointer">
+        <button id="sendWhatsAppRSVP"
+          class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-95 cursor-pointer">
           <i data-lucide="message-circle" class="w-4 h-4"></i> Confirmar Asistencia por WhatsApp
         </button>
       </div>
@@ -287,20 +376,62 @@
 
   </main>
 
-  <!-- SCRIPT -->
+  <!-- ========================================== -->
+  <!-- 3. SCRIPT: FILTRADO DINÁMICO POR PLAN       -->
+  <!-- ========================================== -->
   <script>
     lucide.createIcons();
 
+    // 1. Leer el plan desde la URL (?plan=esencial / signature / vip)
+    const urlParams = new URLSearchParams(window.location.search);
+    const plan = (urlParams.get('plan') || 'signature').toLowerCase();
+
+    // 2. Elementos que se ocultan o muestran según el plan
+    const featureAudio = document.getElementById('feature-audio');
+    const featureItinerario = document.getElementById('feature-itinerario');
+    const featurePadrinos = document.getElementById('feature-padrinos');
+    const featureRegalos = document.getElementById('feature-regalos');
+    const featureHoteles = document.getElementById('feature-hoteles');
+    const featurePases = document.getElementById('feature-pases');
+    const planBadge = document.getElementById('planBadge');
+
+    const bgMusic = document.getElementById('bgMusic');
+
+    if (plan === 'esencial') {
+      planBadge.textContent = 'Demo: Paquete Esencial';
+      // En esencial se oculta música, itinerario extendido, mesa de regalos, hoteles y selector de pases
+      if (featureAudio) featureAudio.classList.add('hidden');
+      if (featureItinerario) featureItinerario.classList.add('hidden');
+      if (featurePadrinos) featurePadrinos.classList.add('hidden');
+      if (featureRegalos) featureRegalos.classList.add('hidden');
+      if (featureHoteles) featureHoteles.classList.add('hidden');
+      if (featurePases) featurePases.classList.add('hidden');
+    } else if (plan === 'signature') {
+      planBadge.textContent = 'Demo: Paquete Signature';
+      // En signature se mantiene música, regalos y pases; se ocultan hoteles e itinerario detallado
+      if (featureItinerario) featureItinerario.classList.add('hidden');
+      if (featureHoteles) featureHoteles.classList.add('hidden');
+    } else if (plan === 'vip') {
+      planBadge.textContent = 'Demo: Paquete All-Inclusive VIP';
+      // En VIP se muestra TODO
+    }
+
+    // Lógica de apertura del sobre
     const envelopeScreen = document.getElementById('envelopeScreen');
     const unsealBtn = document.getElementById('unsealBtn');
     const invitationContent = document.getElementById('invitationContent');
     const toggleMusicBtn = document.getElementById('toggleMusicBtn');
     const musicStatusText = document.getElementById('musicStatusText');
-    let isMusicPlaying = true;
+    let isMusicPlaying = plan !== 'esencial';
 
-    // Abrir sobre virtual
     unsealBtn.addEventListener('click', () => {
       envelopeScreen.classList.add('opacity-0', 'pointer-events-none');
+
+      if (plan !== 'esencial' && bgMusic) {
+        bgMusic.volume = 0.6; // Volumen suave al 60%
+        bgMusic.play().catch(err => console.log("Reproducción postergada por navegador:", err));
+      }
+
       setTimeout(() => {
         envelopeScreen.classList.add('hidden');
         invitationContent.classList.remove('hidden');
@@ -308,22 +439,33 @@
       }, 500);
     });
 
-    // Control de música
-    toggleMusicBtn.addEventListener('click', () => {
-      isMusicPlaying = !isMusicPlaying;
-      musicStatusText.textContent = isMusicPlaying ? 'Música' : 'Silencio';
-      toggleMusicBtn.classList.toggle('opacity-50', !isMusicPlaying);
-    });
+    if (toggleMusicBtn) {
+      toggleMusicBtn.addEventListener('click', () => {
+        if (bgMusic.paused) {
+          bgMusic.play();
+          isMusicPlaying = true;
+          musicStatusText.textContent = 'Música';
+          toggleMusicBtn.classList.remove('opacity-50');
+        } else {
+          bgMusic.pause();
+          isMusicPlaying = false;
+          musicStatusText.textContent = 'Silencio';
+          toggleMusicBtn.classList.add('opacity-50');
+        }
+      });
+    }
 
-    // Envío estructurado de WhatsApp
+    // Botón de WhatsApp
     document.getElementById('sendWhatsAppRSVP').addEventListener('click', () => {
       const name = document.getElementById('guestName').value.trim() || 'Invitado';
-      const attendance = document.getElementById('guestAttendance').value === 'si' ? 'Confirmo mi asistencia' : 'No podré asistir';
-      const tickets = document.getElementById('guestTickets').value;
-      
-      const message = `¡Hola! Soy ${name}. ${attendance} para la Boda de Sofía & Mateo. Pases a utilizar: ${tickets}.`;
+      const tickets = featurePases && !featurePases.classList.contains('hidden')
+        ? ` (${document.getElementById('guestTickets').value} personas)`
+        : '';
+
+      const message = `¡Hola! Soy ${name}. Confirmo mi asistencia para la Boda de Sofía & Mateo${tickets}.`;
       window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
     });
   </script>
 </body>
+
 </html>
