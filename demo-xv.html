@@ -8,7 +8,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -20,7 +20,7 @@
       theme: {
         extend: {
           colors: {
-            champagne: '#F7E7D9',
+            champagne: '#FDF7F2',
             roseGold: {
               light: '#F8D1C5',
               DEFAULT: '#E5A593',
@@ -34,6 +34,7 @@
           },
           boxShadow: {
             'rose-glow': '0 0 35px -5px rgba(229, 165, 147, 0.35)',
+            'card-soft': '0 6px 24px -2px rgba(0, 0, 0, 0.4)',
           }
         }
       }
@@ -44,16 +45,14 @@
     * { font-family: 'Plus Jakarta Sans', sans-serif; }
     .serif { font-family: 'Cormorant Garamond', serif; }
     
-    /* Barras animadas para ecualizador */
     @keyframes soundwave {
-      0%, 100% { height: 4px; }
-      50% { height: 16px; }
+      0%, 100% { height: 6px; }
+      50% { height: 22px; }
     }
     .sound-bar {
       animation: soundwave 1s ease-in-out infinite alternate;
     }
 
-    /* Animación flotante de corona */
     @keyframes floatingCrown {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
       50% { transform: translateY(-6px) rotate(2deg); }
@@ -62,7 +61,6 @@
       animation: floatingCrown 3s ease-in-out infinite;
     }
 
-    /* Zoom cinemático continuo en la foto de portada */
     @keyframes slowHeroZoom {
       0% { transform: scale(1); }
       50% { transform: scale(1.08); }
@@ -73,7 +71,6 @@
       will-change: transform;
     }
 
-    /* 1. ENTRADA CINEMÁTICA ULTRA SUAVE CON BLUR */
     .reveal {
       opacity: 0;
       transform: translateY(22px) scale(0.985);
@@ -95,7 +92,6 @@
     .delay-200 { transition-delay: 200ms; }
     .delay-300 { transition-delay: 300ms; }
 
-    /* 2. BOTONES INTERACTIVOS CON BRILLO LÍQUIDO (SHIMMER) */
     @keyframes shimmerSweep {
       0% { transform: translateX(-150%) skewX(-20deg); }
       40%, 100% { transform: translateX(250%) skewX(-20deg); }
@@ -116,7 +112,7 @@
       background: linear-gradient(
         90deg, 
         transparent, 
-        rgba(255, 255, 255, 0.28), 
+        rgba(255, 255, 255, 0.35), 
         transparent
       );
       transform: translateX(-150%) skewX(-20deg);
@@ -124,7 +120,6 @@
       pointer-events: none;
     }
 
-    /* Microinteracción de pulsación elástica */
     .btn-interactive {
       transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
       cursor: pointer;
@@ -132,24 +127,23 @@
 
     .btn-interactive:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px -4px rgba(229, 165, 147, 0.35);
+      box-shadow: 0 10px 25px -5px rgba(229, 165, 147, 0.4);
     }
 
     .btn-interactive:active {
-      transform: scale(0.96) translateY(0);
+      transform: scale(0.97) translateY(0);
     }
 
-    /* Pulso verde de WhatsApp */
     @keyframes softPulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
-      50% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+      50% { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
     }
     .btn-pulse-emerald {
       animation: softPulse 2.8s infinite;
     }
   </style>
 </head>
-<body class="bg-[#0b090a] text-champagne antialiased selection:bg-roseGold/30 selection:text-white">
+<body class="bg-[#0b090a] text-champagne antialiased selection:bg-roseGold/30 selection:text-white text-base">
 
   <!-- Pista de audio local para XV Años -->
   <audio id="bgMusic" loop preload="auto">
@@ -160,256 +154,627 @@
   <!-- 1. PANTALLA INICIAL: SOBRE DE ACCESO       -->
   <!-- ========================================== -->
   <div id="envelopeScreen" class="fixed inset-0 z-50 bg-[#070506] flex flex-col items-center justify-center p-6 text-center transition-all duration-700">
-    <div class="max-w-sm w-full bg-[#141012] border border-roseGold/20 rounded-3xl p-8 shadow-2xl flex flex-col items-center relative overflow-hidden">
+    <div class="max-w-lg w-full bg-[#141012] border-2 border-roseGold/30 rounded-3xl p-8 sm:p-12 shadow-2xl flex flex-col items-center relative overflow-hidden">
       
-      <!-- Detalle de brillo en esquina -->
-      <div class="absolute -top-12 -right-12 w-32 h-32 bg-roseGold/10 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="absolute -top-12 -right-12 w-56 h-56 bg-roseGold/15 rounded-full blur-3xl pointer-events-none"></div>
 
-      <!-- Insignia del plan activo -->
-      <div id="planBadge" class="mb-4 text-[10px] text-roseGold uppercase tracking-[0.2em] bg-roseGold/10 px-3 py-1 rounded-full border border-roseGold/30">
-        Demo: Paquete Signature
+      <div id="planBadge" class="mb-4 text-sm font-bold text-roseGold uppercase tracking-[0.25em] bg-roseGold/10 px-5 py-2 rounded-full border border-roseGold/30">
+        Demo: Paquete Signature VIP
       </div>
 
-      <span class="text-roseGold text-[11px] tracking-[0.35em] uppercase font-medium mb-2">Pase Exclusivo</span>
-      <h2 class="serif text-4xl italic text-champagne mb-1">Mis XV Años</h2>
-      <p class="text-xs text-roseGold/80 tracking-widest uppercase mb-4">Valentina</p>
+      <span class="text-sm uppercase tracking-[0.35em] text-roseGold/90 mb-2 font-semibold">Pase Exclusivo</span>
+      <h2 class="serif text-5xl sm:text-6xl italic text-champagne mb-2">Mis XV Años</h2>
+      <p class="text-base text-roseGold font-bold tracking-widest uppercase mb-4">Valentina</p>
       
-      <!-- Botón táctil de corona -->
-      <button id="unsealBtn" class="relative my-6 group cursor-pointer btn-interactive">
-        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-roseGold-light via-roseGold to-roseGold-dark flex items-center justify-center text-black font-bold text-2xl shadow-rose-glow group-hover:scale-105 transition-transform border-2 border-white/40">
-          <i data-lucide="crown" class="w-9 h-9 text-[#2b110b] floating-crown"></i>
+      <!-- Corona táctil interactiva -->
+      <button id="unsealBtn" class="relative my-7 group cursor-pointer btn-interactive">
+        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-roseGold-light via-roseGold to-roseGold-dark flex items-center justify-center text-black font-bold text-3xl shadow-rose-glow group-hover:scale-105 transition-transform border-2 border-white/60">
+          <i data-lucide="crown" class="w-14 h-14 text-[#2b110b] floating-crown"></i>
         </div>
-        <div class="absolute -inset-2 rounded-full border border-roseGold/40 animate-ping"></div>
+        <div class="absolute -inset-2.5 rounded-full border-2 border-roseGold/40 animate-ping"></div>
       </button>
 
-      <p class="text-xs text-gray-400 mb-6">Toca la corona para abrir tu invitación</p>
+      <p class="text-base text-gray-300 mb-6 font-medium">Toca la corona para abrir tu invitación</p>
       
-      <span class="text-[10px] text-roseGold/90 border border-roseGold/30 px-3.5 py-1 rounded-full uppercase tracking-widest bg-roseGold/5">
-        Viernes, 14 de Noviembre
-      </span>
+      <div class="flex items-center gap-2.5 text-base sm:text-lg text-roseGold bg-roseGold/10 border border-roseGold/30 px-6 py-2.5 rounded-full font-bold">
+        <i data-lucide="calendar" class="w-5 h-5 text-roseGold"></i>
+        <span>Viernes, 14 de Noviembre de 2026</span>
+      </div>
     </div>
   </div>
 
   <!-- ========================================== -->
   <!-- 2. INVITACIÓN REAL COMPLETA                -->
   <!-- ========================================== -->
-  <main id="invitationContent" class="hidden min-h-screen max-w-md mx-auto bg-[#100d0e] border-x border-white/5 relative pb-20 shadow-2xl">
+  <main id="invitationContent" class="hidden min-h-screen max-w-xl mx-auto bg-[#100d0e] border-x border-white/10 relative pb-32 shadow-2xl">
     
-    <!-- BARRA DE MÚSICA (Signature y VIP) -->
-    <div id="feature-audio" class="sticky top-0 z-30 bg-[#100d0e]/85 backdrop-blur-md px-4 py-3 flex justify-between items-center border-b border-roseGold/10">
-      <div class="flex items-center gap-2">
-        <div class="w-2 h-2 rounded-full bg-roseGold animate-pulse"></div>
-        <span class="text-[11px] text-gray-200">Dua Lipa — Levitating (Remix)</span>
+    <!-- BARRA DE MÚSICA FLOTANTE -->
+    <div id="feature-audio" class="sticky top-0 z-30 bg-[#100d0e]/95 backdrop-blur-md px-6 py-4 flex justify-between items-center border-b border-roseGold/20 shadow-sm">
+      <div class="flex items-center gap-3">
+        <div class="w-3 h-3 rounded-full bg-roseGold animate-pulse"></div>
+        <span class="text-sm sm:text-base text-gray-200 serif italic font-bold">Dua Lipa — Levitating (Remix)</span>
       </div>
-      <button id="toggleMusicBtn" class="flex items-center gap-1.5 text-xs text-roseGold btn-interactive">
-        <div class="flex items-end gap-0.5 h-3.5 mr-1">
+      <button id="toggleMusicBtn" class="flex items-center gap-2 text-sm sm:text-base text-roseGold font-bold btn-interactive bg-roseGold/10 hover:bg-roseGold/20 px-4 py-2 rounded-full border border-roseGold/30">
+        <div class="flex items-end gap-1 h-4">
           <div class="w-0.5 bg-roseGold rounded-full sound-bar" style="animation-delay: 0.1s;"></div>
           <div class="w-0.5 bg-roseGold rounded-full sound-bar" style="animation-delay: 0.3s;"></div>
           <div class="w-0.5 bg-roseGold rounded-full sound-bar" style="animation-delay: 0.2s;"></div>
         </div>
-        <span id="musicStatusText" class="text-[10px] uppercase tracking-wider">Sonando</span>
+        <span id="musicStatusText" class="text-xs sm:text-sm uppercase tracking-wider">Sonando</span>
       </button>
     </div>
 
-    <!-- PORTADA CON ZOOM CINEMÁTICO (Todos los paquetes) -->
-    <header class="relative h-[490px] overflow-hidden flex flex-col justify-end p-6 text-center">
+    <!-- PORTADA CON ZOOM CINEMÁTICO -->
+    <header class="relative h-[560px] overflow-hidden flex flex-col justify-end p-8 sm:p-10 text-center">
       <img
         src="https://images.unsplash.com/photo-1763625648548-283c88d75c93?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         alt="Valentina XV"
-        class="hero-zoom absolute inset-0 w-full h-full object-cover filter brightness-[0.7] contrast-105" />
-      <div class="absolute inset-0 bg-gradient-to-t from-[#100d0e] via-transparent to-black/40"></div>
+        class="hero-zoom absolute inset-0 w-full h-full object-cover filter brightness-[0.72] contrast-105" />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#100d0e] via-black/25 to-black/40"></div>
       
-      <div class="relative z-10 reveal">
-        <div class="inline-flex items-center gap-1.5 bg-black/60 backdrop-blur-md border border-roseGold/30 px-3 py-1 rounded-full text-[10px] text-roseGold uppercase tracking-widest mb-3">
-          <i data-lucide="sparkles" class="w-3 h-3 text-roseGold"></i> Acompáñame a festejar
+      <div class="relative z-10 reveal bg-[#141012]/90 backdrop-blur-sm border border-roseGold/30 rounded-3xl p-7 shadow-rose-glow">
+        <div class="inline-flex items-center gap-2 bg-black/60 border border-roseGold/40 px-4 py-1.5 rounded-full text-xs font-bold text-roseGold uppercase tracking-widest mb-3">
+          <i data-lucide="sparkles" class="w-4 h-4 text-roseGold"></i> Acompáñame a festejar
         </div>
-        <h1 class="serif text-6xl italic text-champagne mb-1 drop-shadow-[0_0_15px_rgba(229,165,147,0.35)]">Valentina</h1>
-        <p class="text-xs text-gray-300 font-light tracking-widest uppercase">The Neon-Gold Celebration</p>
+        <h1 class="serif text-6xl sm:text-7xl italic text-champagne mb-2 drop-shadow-[0_0_20px_rgba(229,165,147,0.4)]">Valentina</h1>
+        <p class="text-base sm:text-lg text-gray-200 font-light tracking-widest uppercase">The Neon-Gold Celebration</p>
       </div>
     </header>
 
-    <!-- CUENTA REGRESIVA (Todos los paquetes) -->
-    <section class="reveal p-6 text-center border-b border-white/5 bg-[#141012]/40">
-      <span class="text-[10px] text-roseGold uppercase tracking-[0.25em] font-semibold block mb-4">TIEMPO PARA LA FIESTA</span>
-      <div class="grid grid-cols-4 gap-2 font-mono">
-        <div class="bg-[#181316] border border-roseGold/20 p-3 rounded-2xl shadow-sm">
-          <span class="text-2xl font-bold text-champagne block">18</span>
-          <span class="text-[9px] text-gray-400 uppercase">Días</span>
-        </div>
-        <div class="bg-[#181316] border border-roseGold/20 p-3 rounded-2xl shadow-sm">
-          <span class="text-2xl font-bold text-champagne block">06</span>
-          <span class="text-[9px] text-gray-400 uppercase">Horas</span>
-        </div>
-        <div class="bg-[#181316] border border-roseGold/20 p-3 rounded-2xl shadow-sm">
-          <span class="text-2xl font-bold text-champagne block">45</span>
-          <span class="text-[9px] text-gray-400 uppercase">Min</span>
-        </div>
-        <div class="bg-[#181316] border border-roseGold/20 p-3 rounded-2xl shadow-sm">
-          <span class="text-2xl font-bold text-champagne block">20</span>
-          <span class="text-[9px] text-gray-400 uppercase">Seg</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALERÍA DE RECUERDOS (Signature y VIP) -->
-    <section id="feature-galeria" class="p-6 border-b border-white/5">
-      <div class="flex items-center justify-between mb-4 reveal">
-        <h3 class="serif text-2xl italic text-roseGold">Mis Recuerdos</h3>
-        <span class="text-[10px] text-gray-400 uppercase tracking-widest">Sesión Previa</span>
-      </div>
-      <div class="grid grid-cols-3 gap-2">
-        <div class="reveal h-28 rounded-xl overflow-hidden border border-white/10 group">
-          <img
-            src="https://images.unsplash.com/photo-1763625648516-d6730a4d78d7?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Foto 1">
-        </div>
-        <div class="reveal delay-100 h-28 rounded-xl overflow-hidden border border-white/10 group">
-          <img
-            src="https://images.unsplash.com/photo-1763625640135-9ed6b1e5a10f?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Foto 2">
-        </div>
-        <div class="reveal delay-200 h-28 rounded-xl overflow-hidden border border-white/10 group">
-          <img
-            src="https://images.unsplash.com/photo-1763625639811-d8c2a993ae6b?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Foto 3">
-        </div>
-      </div>
-    </section>
-
-    <!-- UBICACIÓN (Todos los paquetes) -->
-    <section class="p-6 space-y-4 border-b border-white/5">
-      <h3 class="serif text-3xl text-center italic text-roseGold mb-4 reveal">Ubicación</h3>
-
-      <!-- Misa -->
-      <div class="reveal bg-[#171315] border border-white/5 rounded-2xl p-5">
-        <div class="flex items-center gap-3 mb-2">
-          <div class="w-8 h-8 rounded-full bg-roseGold/10 text-roseGold flex items-center justify-center">
-            <i data-lucide="heart" class="w-4 h-4"></i>
-          </div>
-          <div>
-            <h4 class="font-semibold text-sm">Misa de Acción de Gracias</h4>
-            <span class="text-xs text-roseGold">18:00 hrs</span>
+    <!-- FECHA DEL EVENTO -->
+    <section class="p-8 sm:p-10 text-center">
+      <!-- SEPARADOR PROTAGONISTA: CORONA REAL Y MEDALLÓN ROSE GOLD -->
+      <div class="relative flex items-center justify-center my-6">
+        <div class="flex-1 h-[2px] bg-gradient-to-r from-transparent via-roseGold/60 to-roseGold"></div>
+        <div class="mx-4 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-roseGold/20 rounded-full blur-md"></div>
+          <div class="relative px-5 py-2.5 bg-[#171315] border-2 border-roseGold/60 rounded-full shadow-rose-glow flex items-center gap-2.5">
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+            <i data-lucide="crown" class="w-7 h-7 text-roseGold"></i>
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
           </div>
         </div>
-        <p class="text-xs text-gray-400 mb-4">Capilla San Agustín • Av. Principal #450.</p>
-        <a href="https://maps.google.com" target="_blank" class="w-full py-2.5 bg-[#221b1d] hover:bg-roseGold/20 text-champagne border border-roseGold/20 rounded-xl text-xs flex items-center justify-center gap-2 transition-all btn-interactive">
-          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-roseGold"></i> Ver en Google Maps
-        </a>
+        <div class="flex-1 h-[2px] bg-gradient-to-l from-transparent via-roseGold/60 to-roseGold"></div>
       </div>
 
-      <!-- Salón -->
-      <div class="reveal delay-100 bg-[#171315] border border-white/5 rounded-2xl p-5">
-        <div class="flex items-center gap-3 mb-2">
-          <div class="w-8 h-8 rounded-full bg-roseGold/10 text-roseGold flex items-center justify-center">
-            <i data-lucide="party-popper" class="w-4 h-4"></i>
+      <div class="reveal max-w-md mx-auto bg-[#171315] border-2 border-roseGold/30 rounded-3xl p-8 shadow-card-soft">
+        <span class="text-sm uppercase tracking-[0.3em] text-roseGold font-extrabold block mb-4">La Gran Noche</span>
+        <div class="flex items-center justify-center gap-4 my-3">
+          <span class="text-3xl font-serif italic text-roseGold font-semibold">Viernes</span>
+          <span class="serif text-7xl font-bold text-champagne border-x-2 border-roseGold/30 px-5">14</span>
+          <span class="text-3xl font-serif italic text-roseGold font-semibold">Noviembre</span>
+        </div>
+        <p class="serif text-4xl font-bold text-champagne mt-3">2026</p>
+        <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-center gap-2 text-base text-gray-300 font-semibold">
+          <i data-lucide="map-pin" class="w-5 h-5 text-roseGold"></i>
+          <span>Santiago de Querétaro, Qro.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENSAJE DE LA QUINCEAÑERA -->
+    <section class="p-8 sm:p-10 text-center bg-[#141012]/60">
+      <!-- SEPARADOR PROTAGONISTA -->
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="flex-1 h-[2px] bg-gradient-to-r from-transparent via-roseGold/60 to-roseGold"></div>
+        <div class="mx-4 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-roseGold/20 rounded-full blur-md"></div>
+          <div class="relative px-5 py-2.5 bg-[#171315] border-2 border-roseGold/60 rounded-full shadow-rose-glow flex items-center gap-2.5">
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+            <i data-lucide="crown" class="w-7 h-7 text-roseGold"></i>
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
           </div>
-          <div>
-            <h4 class="font-semibold text-sm">La Gran Fiesta & DJ Night</h4>
-            <span class="text-xs text-roseGold">20:00 hrs</span>
+        </div>
+        <div class="flex-1 h-[2px] bg-gradient-to-l from-transparent via-roseGold/60 to-roseGold"></div>
+      </div>
+
+      <div class="reveal max-w-lg mx-auto">
+        <div class="w-14 h-14 rounded-full bg-roseGold/10 text-roseGold flex items-center justify-center mx-auto mb-4 border border-roseGold/25">
+          <i data-lucide="quote" class="w-7 h-7"></i>
+        </div>
+        <span class="text-sm text-roseGold uppercase tracking-[0.3em] font-bold block mb-4">Palabras de Valentina</span>
+        
+        <!-- Versión Esencial -->
+        <div id="mensaje-esencial">
+          <p class="serif text-2xl sm:text-3xl italic text-champagne leading-relaxed">
+            "Hoy comienzo una nueva etapa llena de sueños e ilusiones, y no hay mejor regalo que festejarlo con quienes más quiero."
+          </p>
+        </div>
+
+        <!-- Versión VIP -->
+        <div id="mensaje-vip" class="hidden">
+          <h3 class="serif text-3xl sm:text-4xl italic text-roseGold mb-4 font-semibold">A Mi Querida Familia & Amigos</h3>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed font-normal mb-5">
+            Quince años se dicen fácil, pero cada momento vivido me ha traído hasta esta noche tan especial. Gracias a mis papás por su amor infinito y a mis amigos por tantas risas. Quiero que bailes, sonrías y celebres conmigo el inicio de este nuevo capítulo. ¡Bienvenidos a mi fiesta!
+          </p>
+          <span class="serif text-2xl sm:text-3xl italic text-roseGold block font-bold">— Con todo mi cariño, Valentina</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: NUESTROS PADRES -->
+    <section class="p-8 sm:p-10 text-center">
+      <!-- SEPARADOR PROTAGONISTA -->
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="flex-1 h-[2px] bg-gradient-to-r from-transparent via-roseGold/60 to-roseGold"></div>
+        <div class="mx-4 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-roseGold/20 rounded-full blur-md"></div>
+          <div class="relative px-5 py-2.5 bg-[#171315] border-2 border-roseGold/60 rounded-full shadow-rose-glow flex items-center gap-2.5">
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+            <i data-lucide="crown" class="w-7 h-7 text-roseGold"></i>
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
           </div>
         </div>
-        <p class="text-xs text-gray-400 mb-4">Salón Terrazas Sky Garden • Piso 5, Zona Rosa.</p>
-        <a href="https://maps.google.com" target="_blank" class="w-full py-2.5 bg-[#221b1d] hover:bg-roseGold/20 text-champagne border border-roseGold/20 rounded-xl text-xs flex items-center justify-center gap-2 transition-all btn-interactive">
-          <i data-lucide="navigation" class="w-3.5 h-3.5 text-roseGold"></i> Abrir con Waze / Uber
-        </a>
+        <div class="flex-1 h-[2px] bg-gradient-to-l from-transparent via-roseGold/60 to-roseGold"></div>
       </div>
-    </section>
 
-    <!-- ITINERARIO DETALLADO (Solo VIP) -->
-    <section id="feature-itinerario" class="p-6 border-b border-white/5">
-      <h3 class="serif text-2xl text-center italic text-roseGold mb-6 reveal">El Programa</h3>
-      <div class="space-y-3 text-xs">
-        <div class="reveal flex items-center gap-4 bg-[#161214] p-3 rounded-xl border border-white/5">
-          <span class="font-mono text-roseGold font-semibold w-16">20:00 h</span>
-          <span>Recepción y Cóctel Mocktails</span>
+      <div class="reveal max-w-xl mx-auto">
+        <div class="w-14 h-14 rounded-full bg-roseGold/10 text-roseGold flex items-center justify-center mx-auto mb-4 border border-roseGold/25">
+          <i data-lucide="heart" class="w-7 h-7"></i>
         </div>
-        <div class="reveal delay-100 flex items-center gap-4 bg-[#161214] p-3 rounded-xl border border-white/5">
-          <span class="font-mono text-roseGold font-semibold w-16">21:00 h</span>
-          <span>Vals Principal & Baile Sorpresa</span>
-        </div>
-        <div class="reveal delay-200 flex items-center gap-4 bg-[#161214] p-3 rounded-xl border border-white/5">
-          <span class="font-mono text-roseGold font-semibold w-16">21:45 h</span>
-          <span>Cena de Gala & Brindis</span>
-        </div>
-        <div class="reveal delay-300 flex items-center gap-4 bg-[#161214] p-3 rounded-xl border border-white/5">
-          <span class="font-mono text-roseGold font-semibold w-16">22:30 h</span>
-          <span>DJ Set, Glow Party & Pista Abierta</span>
+        <span class="text-sm text-roseGold uppercase tracking-[0.25em] font-bold block mb-2">Con la bendición y amor de</span>
+        <h3 class="serif text-4xl sm:text-5xl italic text-champagne mb-6">Mis Padres</h3>
+
+        <div class="bg-[#171315] border-2 border-roseGold/20 rounded-3xl p-6 sm:p-8 text-center shadow-card-soft">
+          <div class="w-12 h-12 rounded-full bg-roseGold/10 text-roseGold flex items-center justify-center mx-auto mb-3">
+            <i data-lucide="users" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs sm:text-sm uppercase tracking-widest text-roseGold block font-mono font-bold mb-2">Mis Amados Padres</span>
+          <p class="font-bold text-xl sm:text-2xl text-champagne">Mauricio Mendoza</p>
+          <p class="text-lg sm:text-xl text-gray-300 font-medium mt-1">& Gabriela Estrada</p>
+          <p class="text-sm sm:text-base text-gray-400 italic mt-4 font-serif">"Gracias por darme la vida, guiar mis pasos y hacer este sueño realidad."</p>
         </div>
       </div>
     </section>
 
-    <!-- DRESS CODE (Todos los paquetes) -->
-    <section class="reveal p-6 text-center border-b border-white/5">
-      <h3 class="serif text-2xl italic text-roseGold mb-1">Dress Code</h3>
-      <span class="text-sm font-semibold uppercase tracking-wider block mb-2 text-champagne">Elegante / Noche de Fiesta</span>
-      <p class="text-xs text-gray-400 max-w-xs mx-auto mb-4">
-        Queremos que luzcas increíble para las fotos. Evita el tono palo de rosa/oro rosado (reservado para la quinceañera).
-      </p>
-      
-      <div class="inline-flex items-center gap-2 bg-black/40 border border-white/10 px-3 py-1.5 rounded-full text-[11px] text-gray-300">
-        <span class="w-2.5 h-2.5 rounded-full bg-roseGold inline-block"></span>
-        <span>Color reservado para Valentina</span>
+    <!-- CUENTA REGRESIVA DINÁMICA REAL -->
+    <section class="reveal p-8 sm:p-10 text-center bg-[#141012]/60">
+      <!-- SEPARADOR PROTAGONISTA -->
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="flex-1 h-[2px] bg-gradient-to-r from-transparent via-roseGold/60 to-roseGold"></div>
+        <div class="mx-4 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-roseGold/20 rounded-full blur-md"></div>
+          <div class="relative px-5 py-2.5 bg-[#171315] border-2 border-roseGold/60 rounded-full shadow-rose-glow flex items-center gap-2.5">
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+            <i data-lucide="crown" class="w-7 h-7 text-roseGold"></i>
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+          </div>
+        </div>
+        <div class="flex-1 h-[2px] bg-gradient-to-l from-transparent via-roseGold/60 to-roseGold"></div>
+      </div>
+
+      <div class="w-14 h-14 rounded-full bg-roseGold/10 text-roseGold flex items-center justify-center mx-auto mb-4 border border-roseGold/25">
+        <i data-lucide="hourglass" class="w-7 h-7"></i>
+      </div>
+      <span class="text-sm text-roseGold uppercase tracking-widest font-extrabold block mb-6">TIEMPO PARA LA FIESTA</span>
+      <div class="grid grid-cols-4 gap-3 sm:gap-4 font-mono">
+        <div class="bg-[#171315] border-2 border-roseGold/20 p-5 rounded-2xl shadow-card-soft">
+          <span id="countdown-days" class="text-3xl sm:text-4xl font-bold text-champagne block">--</span>
+          <span class="text-xs sm:text-sm text-gray-400 uppercase font-bold mt-1 block">Días</span>
+        </div>
+        <div class="bg-[#171315] border-2 border-roseGold/20 p-5 rounded-2xl shadow-card-soft">
+          <span id="countdown-hours" class="text-3xl sm:text-4xl font-bold text-champagne block">--</span>
+          <span class="text-xs sm:text-sm text-gray-400 uppercase font-bold mt-1 block">Horas</span>
+        </div>
+        <div class="bg-[#171315] border-2 border-roseGold/20 p-5 rounded-2xl shadow-card-soft">
+          <span id="countdown-minutes" class="text-3xl sm:text-4xl font-bold text-champagne block">--</span>
+          <span class="text-xs sm:text-sm text-gray-400 uppercase font-bold mt-1 block">Min</span>
+        </div>
+        <div class="bg-[#171315] border-2 border-roseGold/20 p-5 rounded-2xl shadow-card-soft">
+          <span id="countdown-seconds" class="text-3xl sm:text-4xl font-bold text-champagne block">--</span>
+          <span class="text-xs sm:text-sm text-gray-400 uppercase font-bold mt-1 block">Seg</span>
+        </div>
       </div>
     </section>
 
-    <!-- MESA DE REGALOS (Signature y VIP) -->
-    <section id="feature-regalos" class="p-6 border-b border-white/5">
-      <h3 class="serif text-2xl text-center italic text-roseGold mb-3 reveal">Mesa de Regalos</h3>
-      <p class="text-xs text-center text-gray-400 mb-6 reveal">Tu compañía y ganas de bailar son mi mejor regalo, pero si quieres tener un detalle:</p>
-      
-      <div class="space-y-3">
-        <a href="https://www.amazon.com.mx" target="_blank" class="reveal flex justify-between items-center p-4 bg-[#171315] border border-white/5 rounded-2xl hover:border-roseGold/40 transition-all text-xs btn-interactive">
-          <div class="flex items-center gap-3">
-            <i data-lucide="shopping-bag" class="w-4 h-4 text-roseGold"></i>
-            <div>
-              <p class="font-semibold text-champagne">Wishlist en Amazon</p>
-              <p class="text-[10px] text-gray-400">Ver lista de regalos sugeridos</p>
+    <!-- PADRINOS EMBLEMÁTICOS (Exclusivo VIP - Separador integrado) -->
+    <section id="feature-padrinos" class="p-8 sm:p-10 text-center">
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="flex-1 h-[2px] bg-gradient-to-r from-transparent via-roseGold/60 to-roseGold"></div>
+        <div class="mx-4 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-roseGold/20 rounded-full blur-md"></div>
+          <div class="relative px-5 py-2.5 bg-[#171315] border-2 border-roseGold/60 rounded-full shadow-rose-glow flex items-center gap-2.5">
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+            <i data-lucide="crown" class="w-7 h-7 text-roseGold"></i>
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+          </div>
+        </div>
+        <div class="flex-1 h-[2px] bg-gradient-to-l from-transparent via-roseGold/60 to-roseGold"></div>
+      </div>
+
+      <div class="reveal">
+        <div class="w-14 h-14 rounded-full bg-roseGold/10 text-roseGold flex items-center justify-center mx-auto mb-4 border border-roseGold/25">
+          <i data-lucide="award" class="w-7 h-7"></i>
+        </div>
+        <span class="text-sm text-roseGold uppercase tracking-[0.25em] font-bold block mb-2">Acompañamiento Especial</span>
+        <h3 class="serif text-4xl sm:text-5xl italic text-champagne mb-8">Mis Padrinos</h3>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm sm:text-base text-left">
+          <div class="bg-[#171315] border-2 border-roseGold/20 rounded-2xl p-5 shadow-card-soft">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-10 h-10 rounded-xl bg-roseGold/10 text-roseGold flex items-center justify-center shrink-0">
+                <i data-lucide="sparkles" class="w-5 h-5 text-roseGold"></i>
+              </div>
+              <div>
+                <span class="text-xs uppercase tracking-widest text-roseGold font-mono font-bold block">Padrinos de Vestido</span>
+                <p class="font-bold text-base text-champagne">Lic. Daniel Rivas</p>
+                <p class="text-sm text-gray-400">& Sofía Carrillo</p>
+              </div>
             </div>
           </div>
-          <i data-lucide="arrow-up-right" class="w-4 h-4 text-roseGold"></i>
-        </a>
 
-        <div class="reveal delay-100 p-4 bg-[#171315] border border-white/5 rounded-2xl text-xs">
-          <div class="flex items-center gap-3 mb-1.5">
-            <i data-lucide="mail" class="w-4 h-4 text-roseGold"></i>
-            <p class="font-semibold text-champagne">Lluvia de Sobres</p>
+          <div class="bg-[#171315] border-2 border-roseGold/20 rounded-2xl p-5 shadow-card-soft">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-10 h-10 rounded-xl bg-roseGold/10 text-roseGold flex items-center justify-center shrink-0">
+                <i data-lucide="wine" class="w-5 h-5 text-roseGold"></i>
+              </div>
+              <div>
+                <span class="text-xs uppercase tracking-widest text-roseGold font-mono font-bold block">Padrinos de Brindis</span>
+                <p class="font-bold text-base text-champagne">Ing. Roberto Morales</p>
+                <p class="text-sm text-gray-400">& Elena Paredes</p>
+              </div>
+            </div>
           </div>
-          <p class="text-[11px] text-gray-400">Habrá un baúl especial en la entrada del salón.</p>
+
+          <div class="bg-[#171315] border-2 border-roseGold/20 rounded-2xl p-5 shadow-card-soft">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-10 h-10 rounded-xl bg-roseGold/10 text-roseGold flex items-center justify-center shrink-0">
+                <i data-lucide="heart-handshake" class="w-5 h-5 text-roseGold"></i>
+              </div>
+              <div>
+                <span class="text-xs uppercase tracking-widest text-roseGold font-mono font-bold block">Padrinos de Cojín</span>
+                <p class="font-bold text-base text-champagne">Carlos Valenzuela</p>
+                <p class="text-sm text-gray-400">& Mariana Soto</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-[#171315] border-2 border-roseGold/20 rounded-2xl p-5 shadow-card-soft">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-10 h-10 rounded-xl bg-roseGold/10 text-roseGold flex items-center justify-center shrink-0">
+                <i data-lucide="gift" class="w-5 h-5 text-roseGold"></i>
+              </div>
+              <div>
+                <span class="text-xs uppercase tracking-widest text-roseGold font-mono font-bold block">Regalo Sorpresa</span>
+                <p class="font-bold text-base text-champagne">Esteban Cruz</p>
+                <p class="text-sm text-gray-400">& Cecilia Navarro</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- FORMULARIO DE CONFIRMACIÓN (Adaptado según plan) -->
-    <section class="p-6 text-center">
-      <h3 class="serif text-3xl italic text-roseGold mb-1 reveal">¿Vas a ir a la fiesta?</h3>
-      <p class="text-xs text-gray-400 mb-6 reveal">Por favor confirma antes del 25 de Octubre para apartar tu lugar.</p>
+    <!-- GALERÍA FOTOGRÁFICA -->
+    <section class="p-8 sm:p-10">
+      <!-- SEPARADOR PROTAGONISTA -->
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="flex-1 h-[2px] bg-gradient-to-r from-transparent via-roseGold/60 to-roseGold"></div>
+        <div class="mx-4 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-roseGold/20 rounded-full blur-md"></div>
+          <div class="relative px-5 py-2.5 bg-[#171315] border-2 border-roseGold/60 rounded-full shadow-rose-glow flex items-center gap-2.5">
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+            <i data-lucide="crown" class="w-7 h-7 text-roseGold"></i>
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+          </div>
+        </div>
+        <div class="flex-1 h-[2px] bg-gradient-to-l from-transparent via-roseGold/60 to-roseGold"></div>
+      </div>
 
-      <div class="reveal bg-[#171315] border border-white/10 rounded-2xl p-5 text-left space-y-4 shadow-xl">
+      <div class="flex items-center justify-between mb-8 reveal">
         <div>
-          <label class="block text-[11px] text-gray-400 uppercase tracking-wider mb-1">Nombre o Apellidos</label>
-          <input id="guestName" type="text" placeholder="Ej. Camila & Amigas" class="w-full bg-[#100d0e] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-roseGold outline-none" />
+          <span class="text-sm text-roseGold uppercase tracking-widest font-bold block mb-1">Sesión Previa</span>
+          <h3 class="serif text-3xl sm:text-5xl italic text-champagne">Mis Recuerdos</h3>
+        </div>
+        <span id="galeria-badge" class="text-sm text-roseGold bg-roseGold/10 border border-roseGold/30 px-4 py-2 rounded-full font-mono font-bold">3 Fotos</span>
+      </div>
+
+      <div class="grid grid-cols-2 gap-5">
+        <div class="reveal h-64 sm:h-72 rounded-3xl overflow-hidden border-2 border-white/10 group shadow-card-soft">
+          <img
+            src="https://images.unsplash.com/photo-1763625648516-d6730a4d78d7?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Foto Valentina 1">
+        </div>
+        <div class="reveal delay-100 h-64 sm:h-72 rounded-3xl overflow-hidden border-2 border-white/10 group shadow-card-soft">
+          <img
+            src="https://images.unsplash.com/photo-1763625640135-9ed6b1e5a10f?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Foto Valentina 2">
+        </div>
+        <div class="reveal col-span-2 h-72 sm:h-80 rounded-3xl overflow-hidden border-2 border-white/10 group shadow-card-soft">
+          <img
+            src="https://images.unsplash.com/photo-1763625639811-d8c2a993ae6b?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Foto Valentina 3">
+        </div>
+      </div>
+
+      <div id="galeria-vip-extra" class="grid grid-cols-2 gap-5 mt-5">
+        <div class="reveal h-64 sm:h-72 rounded-3xl overflow-hidden border-2 border-white/10 group shadow-card-soft">
+          <img
+            src="https://images.unsplash.com/photo-1763625648548-283c88d75c93?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Foto Valentina 4">
+        </div>
+        <div class="reveal delay-100 h-64 sm:h-72 rounded-3xl overflow-hidden border-2 border-white/10 group shadow-card-soft">
+          <img
+            src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=1200&auto=format&fit=crop"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Foto Valentina 5">
+        </div>
+        <div class="reveal h-64 sm:h-72 rounded-3xl overflow-hidden border-2 border-white/10 group shadow-card-soft">
+          <img
+            src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Foto Valentina 6">
+        </div>
+        <div class="reveal delay-100 h-64 sm:h-72 rounded-3xl overflow-hidden border-2 border-white/10 group shadow-card-soft">
+          <img
+            src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Foto Valentina 7">
+        </div>
+      </div>
+    </section>
+
+    <!-- ¿DÓNDE & CUÁNDO? -->
+    <section class="p-8 sm:p-10 space-y-6 bg-[#141012]/60">
+      <!-- SEPARADOR PROTAGONISTA -->
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="flex-1 h-[2px] bg-gradient-to-r from-transparent via-roseGold/60 to-roseGold"></div>
+        <div class="mx-4 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-roseGold/20 rounded-full blur-md"></div>
+          <div class="relative px-5 py-2.5 bg-[#171315] border-2 border-roseGold/60 rounded-full shadow-rose-glow flex items-center gap-2.5">
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+            <i data-lucide="crown" class="w-7 h-7 text-roseGold"></i>
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+          </div>
+        </div>
+        <div class="flex-1 h-[2px] bg-gradient-to-l from-transparent via-roseGold/60 to-roseGold"></div>
+      </div>
+
+      <div class="text-center reveal">
+        <span class="text-sm text-roseGold uppercase tracking-[0.3em] font-bold block mb-2">Locaciones</span>
+        <h3 class="serif text-4xl sm:text-5xl italic text-champagne">¿Dónde & Cuándo?</h3>
+      </div>
+
+      <div class="reveal bg-[#171315] border-2 border-white/10 rounded-3xl p-7 shadow-card-soft">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-14 h-14 rounded-2xl bg-roseGold/10 text-roseGold flex items-center justify-center shrink-0 border border-roseGold/30">
+            <i data-lucide="heart" class="w-7 h-7 text-roseGold"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-xl text-champagne">Misa de Acción de Gracias</h4>
+            <span class="text-base text-roseGold font-extrabold flex items-center gap-1.5 mt-1">
+              <i data-lucide="clock" class="w-4 h-4"></i> 18:00 hrs
+            </span>
+          </div>
+        </div>
+        <p class="text-base text-gray-300 mb-6 leading-relaxed">
+          <strong class="text-champagne text-lg block mb-1">Capilla San Agustín</strong>
+          Av. Principal #450, Col. Campestre.
+        </p>
+        <a href="https://maps.google.com" target="_blank" class="w-full py-4 bg-[#221b1d] hover:bg-roseGold/20 text-champagne border-2 border-roseGold/30 hover:border-roseGold rounded-2xl text-base font-bold flex items-center justify-center gap-2.5 transition-all btn-interactive">
+          <i data-lucide="map-pin" class="w-5 h-5 text-roseGold"></i> Ver en Google Maps
+        </a>
+      </div>
+
+      <div class="reveal delay-100 bg-[#171315] border-2 border-white/10 rounded-3xl p-7 shadow-card-soft">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-14 h-14 rounded-2xl bg-roseGold/10 text-roseGold flex items-center justify-center shrink-0 border border-roseGold/30">
+            <i data-lucide="party-popper" class="w-7 h-7 text-roseGold"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-xl text-champagne">La Gran Fiesta & DJ Night</h4>
+            <span class="text-base text-roseGold font-extrabold flex items-center gap-1.5 mt-1">
+              <i data-lucide="clock" class="w-4 h-4"></i> 20:00 hrs
+            </span>
+          </div>
+        </div>
+        <p class="text-base text-gray-300 mb-6 leading-relaxed">
+          <strong class="text-champagne text-lg block mb-1">Salón Terrazas Sky Garden</strong>
+          Piso 5, Zona Rosa, Bernardo Quintana.
+        </p>
+        <div class="grid grid-cols-2 gap-4">
+          <a href="https://maps.google.com" target="_blank" class="py-4 bg-[#221b1d] hover:bg-roseGold/20 text-champagne border-2 border-roseGold/30 hover:border-roseGold rounded-2xl text-base font-bold flex items-center justify-center gap-2 transition-all btn-interactive">
+            <i data-lucide="map-pin" class="w-5 h-5 text-roseGold"></i> Maps
+          </a>
+          <a href="https://waze.com" target="_blank" class="py-4 bg-[#221b1d] hover:bg-roseGold/20 text-champagne border-2 border-roseGold/30 hover:border-roseGold rounded-2xl text-base font-bold flex items-center justify-center gap-2 transition-all btn-interactive">
+            <i data-lucide="navigation" class="w-5 h-5 text-roseGold"></i> Waze
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EL PROGRAMA / ITINERARIO (Exclusivo VIP - Separador integrado) -->
+    <section id="feature-itinerario" class="p-8 sm:p-10">
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="flex-1 h-[2px] bg-gradient-to-r from-transparent via-roseGold/60 to-roseGold"></div>
+        <div class="mx-4 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-roseGold/20 rounded-full blur-md"></div>
+          <div class="relative px-5 py-2.5 bg-[#171315] border-2 border-roseGold/60 rounded-full shadow-rose-glow flex items-center gap-2.5">
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+            <i data-lucide="crown" class="w-7 h-7 text-roseGold"></i>
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+          </div>
+        </div>
+        <div class="flex-1 h-[2px] bg-gradient-to-l from-transparent via-roseGold/60 to-roseGold"></div>
+      </div>
+
+      <div class="text-center mb-8 reveal">
+        <div class="w-14 h-14 rounded-full bg-roseGold/10 text-roseGold flex items-center justify-center mx-auto mb-4 border border-roseGold/25">
+          <i data-lucide="calendar-check" class="w-7 h-7"></i>
+        </div>
+        <span class="text-sm text-roseGold uppercase tracking-[0.25em] font-bold block mb-1">Cronograma de la Noche</span>
+        <h3 class="serif text-4xl sm:text-5xl italic text-champagne">Itinerario de la Fiesta</h3>
+      </div>
+
+      <div class="space-y-4 text-base">
+        <div class="reveal flex items-center gap-4 bg-[#171315] p-5 rounded-2xl border border-white/10 shadow-card-soft">
+          <div class="w-12 h-12 rounded-xl bg-roseGold/10 text-roseGold flex items-center justify-center shrink-0">
+            <i data-lucide="wine" class="w-6 h-6 text-roseGold"></i>
+          </div>
+          <div class="flex-1">
+            <span class="font-mono text-roseGold font-extrabold text-sm block">20:00 HRS</span>
+            <span class="text-lg text-champagne font-bold">Recepción y Cóctel Mocktails</span>
+          </div>
+        </div>
+
+        <div class="reveal delay-100 flex items-center gap-4 bg-[#171315] p-5 rounded-2xl border border-white/10 shadow-card-soft">
+          <div class="w-12 h-12 rounded-xl bg-roseGold/10 text-roseGold flex items-center justify-center shrink-0">
+            <i data-lucide="sparkles" class="w-6 h-6 text-roseGold"></i>
+          </div>
+          <div class="flex-1">
+            <span class="font-mono text-roseGold font-extrabold text-sm block">21:00 HRS</span>
+            <span class="text-lg text-champagne font-bold">Vals Principal & Baile Sorpresa</span>
+          </div>
+        </div>
+
+        <div class="reveal delay-200 flex items-center gap-4 bg-[#171315] p-5 rounded-2xl border border-white/10 shadow-card-soft">
+          <div class="w-12 h-12 rounded-xl bg-roseGold/10 text-roseGold flex items-center justify-center shrink-0">
+            <i data-lucide="utensils" class="w-6 h-6 text-roseGold"></i>
+          </div>
+          <div class="flex-1">
+            <span class="font-mono text-roseGold font-extrabold text-sm block">21:45 HRS</span>
+            <span class="text-lg text-champagne font-bold">Cena de Gala & Brindis</span>
+          </div>
+        </div>
+
+        <div class="reveal delay-300 flex items-center gap-4 bg-[#171315] p-5 rounded-2xl border border-white/10 shadow-card-soft">
+          <div class="w-12 h-12 rounded-xl bg-roseGold/10 text-roseGold flex items-center justify-center shrink-0">
+            <i data-lucide="music" class="w-6 h-6 text-roseGold"></i>
+          </div>
+          <div class="flex-1">
+            <span class="font-mono text-roseGold font-extrabold text-sm block">22:30 HRS</span>
+            <span class="text-lg text-champagne font-bold">DJ Set, Glow Party & Pista Abierta</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section class="reveal p-8 sm:p-10 text-center">
+      <!-- SEPARADOR PROTAGONISTA -->
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="flex-1 h-[2px] bg-gradient-to-r from-transparent via-roseGold/60 to-roseGold"></div>
+        <div class="mx-4 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-roseGold/20 rounded-full blur-md"></div>
+          <div class="relative px-5 py-2.5 bg-[#171315] border-2 border-roseGold/60 rounded-full shadow-rose-glow flex items-center gap-2.5">
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+            <i data-lucide="crown" class="w-7 h-7 text-roseGold"></i>
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+          </div>
+        </div>
+        <div class="flex-1 h-[2px] bg-gradient-to-l from-transparent via-roseGold/60 to-roseGold"></div>
+      </div>
+
+      <div class="w-14 h-14 rounded-full bg-roseGold/10 text-roseGold flex items-center justify-center mx-auto mb-4 border border-roseGold/25">
+        <i data-lucide="sparkles" class="w-7 h-7"></i>
+      </div>
+      <h3 class="serif text-4xl sm:text-5xl italic text-roseGold mb-3">Dress Code</h3>
+      <span class="text-lg sm:text-xl font-extrabold uppercase tracking-wider block mb-3 text-champagne">Elegante / Noche de Fiesta</span>
+      <p class="text-base sm:text-lg text-gray-300 max-w-md mx-auto mb-6 leading-relaxed">
+        Queremos que luzcas increíble para las fotos. Evita el tono palo de rosa/oro rosado (reservado para la festejada).
+      </p>
+      
+      <div class="inline-flex justify-center items-center gap-3 text-sm sm:text-base text-gray-200 bg-black/50 px-6 py-3 rounded-full border border-roseGold/40 shadow-card-soft">
+        <span class="w-3.5 h-3.5 rounded-full bg-roseGold inline-block shadow-sm"></span>
+        <span class="font-bold text-roseGold">Color reservado exclusivamente para Valentina.</span>
+      </div>
+    </section>
+
+    <!-- MESA DE REGALOS -->
+    <section class="p-8 sm:p-10 bg-[#141012]/60">
+      <!-- SEPARADOR PROTAGONISTA -->
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="flex-1 h-[2px] bg-gradient-to-r from-transparent via-roseGold/60 to-roseGold"></div>
+        <div class="mx-4 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-roseGold/20 rounded-full blur-md"></div>
+          <div class="relative px-5 py-2.5 bg-[#171315] border-2 border-roseGold/60 rounded-full shadow-rose-glow flex items-center gap-2.5">
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+            <i data-lucide="crown" class="w-7 h-7 text-roseGold"></i>
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+          </div>
+        </div>
+        <div class="flex-1 h-[2px] bg-gradient-to-l from-transparent via-roseGold/60 to-roseGold"></div>
+      </div>
+
+      <div class="text-center mb-8 reveal">
+        <div class="w-14 h-14 rounded-full bg-roseGold/10 text-roseGold flex items-center justify-center mx-auto mb-4 border border-roseGold/25">
+          <i data-lucide="gift" class="w-7 h-7"></i>
+        </div>
+        <h3 class="serif text-4xl sm:text-5xl italic text-roseGold mb-3">Mesa de Regalos</h3>
+        <p class="text-base sm:text-lg text-gray-300 max-w-md mx-auto">Tu compañía y ganas de bailar son mi mejor regalo, pero si quieres tener un detalle:</p>
+      </div>
+      
+      <div class="space-y-5">
+        <a href="https://www.amazon.com.mx" target="_blank" class="reveal flex justify-between items-center p-6 bg-[#171315] border-2 border-white/10 hover:border-roseGold/60 rounded-3xl transition-all text-base btn-interactive shadow-card-soft">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-roseGold/10 text-roseGold flex items-center justify-center">
+              <i data-lucide="shopping-bag" class="w-6 h-6 text-roseGold"></i>
+            </div>
+            <div>
+              <p class="font-bold text-lg text-champagne">Wishlist en Amazon</p>
+              <p class="text-sm text-gray-400 mt-0.5">Ver lista de regalos sugeridos de Valentina</p>
+            </div>
+          </div>
+          <i data-lucide="arrow-up-right" class="w-6 h-6 text-roseGold"></i>
+        </a>
+
+        <div class="reveal delay-100 p-6 bg-[#171315] border-2 border-white/10 rounded-3xl text-base shadow-card-soft">
+          <div class="flex items-center gap-3.5 mb-3">
+            <div class="w-12 h-12 rounded-2xl bg-roseGold/10 text-roseGold flex items-center justify-center">
+              <i data-lucide="mail" class="w-6 h-6 text-roseGold"></i>
+            </div>
+            <p class="font-bold text-lg text-champagne">Lluvia de Sobres</p>
+          </div>
+          <p class="text-base text-gray-300">Habrá un baúl especial de sobres en la entrada del salón.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULARIO DE CONFIRMACIÓN -->
+    <section class="p-8 sm:p-10 text-center">
+      <!-- SEPARADOR PROTAGONISTA -->
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="flex-1 h-[2px] bg-gradient-to-r from-transparent via-roseGold/60 to-roseGold"></div>
+        <div class="mx-4 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-roseGold/20 rounded-full blur-md"></div>
+          <div class="relative px-5 py-2.5 bg-[#171315] border-2 border-roseGold/60 rounded-full shadow-rose-glow flex items-center gap-2.5">
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+            <i data-lucide="crown" class="w-7 h-7 text-roseGold"></i>
+            <i data-lucide="sparkles" class="w-4 h-4 text-roseGold-light animate-pulse"></i>
+          </div>
+        </div>
+        <div class="flex-1 h-[2px] bg-gradient-to-l from-transparent via-roseGold/60 to-roseGold"></div>
+      </div>
+
+      <div class="w-14 h-14 rounded-full bg-roseGold/10 text-roseGold flex items-center justify-center mx-auto mb-4 border border-roseGold/25">
+        <i data-lucide="check-circle" class="w-7 h-7"></i>
+      </div>
+      <h3 class="serif text-4xl sm:text-5xl italic text-roseGold mb-3 reveal">¿Vas a ir a la fiesta?</h3>
+      <p class="text-base sm:text-lg text-gray-300 mb-8 reveal font-normal">Por favor confirma antes del 25 de Octubre de 2026 para apartar tu lugar.</p>
+
+      <div class="reveal bg-[#171315] border-2 border-roseGold/30 rounded-3xl p-7 sm:p-8 text-left space-y-6 shadow-rose-glow">
+        <div>
+          <label class="block text-sm font-bold text-roseGold uppercase tracking-wider mb-2">Nombre o Apellidos de Quien Confirma</label>
+          <input id="guestName" type="text" placeholder="Ej. Camila & Amigas" class="w-full bg-[#100d0e] border border-white/20 rounded-2xl px-5 py-4 text-base text-champagne focus:border-roseGold outline-none" />
         </div>
 
         <div>
-          <label class="block text-[11px] text-gray-400 uppercase tracking-wider mb-1">¿Asistirás?</label>
-          <select id="guestAttendance" class="w-full bg-[#100d0e] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-roseGold outline-none">
-            <option value="si">¡Obvio sí, no me lo pierdo!</option>
-            <option value="no">Lo siento, no podré ir :(</option>
+          <label class="block text-sm font-bold text-roseGold uppercase tracking-wider mb-2">¿Asistirás al Evento?</label>
+          <select id="guestAttendance" class="w-full bg-[#100d0e] border border-white/20 rounded-2xl px-5 py-4 text-base text-champagne focus:border-roseGold outline-none">
+            <option value="si">¡Obvio sí, no me lo pierdo por nada!</option>
+            <option value="no">Lo siento, lamentablemente no podré ir :(</option>
           </select>
         </div>
 
-        <!-- Selector de pases (Oculto en Esencial, activo en Signature y VIP) -->
         <div id="feature-pases">
-          <label class="block text-[11px] text-gray-400 uppercase tracking-wider mb-1">Pases confirmados</label>
-          <select id="guestTickets" class="w-full bg-[#100d0e] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-roseGold outline-none">
+          <label class="block text-sm font-bold text-roseGold uppercase tracking-wider mb-2">Pases Confirmados</label>
+          <select id="guestTickets" class="w-full bg-[#100d0e] border border-white/20 rounded-2xl px-5 py-4 text-base text-champagne focus:border-roseGold outline-none">
             <option value="1">1 Pase (Personal)</option>
-            <option value="2" selected>2 Pases</option>
+            <option value="2" selected>2 Pases (Pareja / Amigos)</option>
             <option value="3">3 Pases (Familia)</option>
+            <option value="4">4 Pases (Familia)</option>
           </select>
         </div>
 
-        <button id="sendWhatsAppRSVP" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 shadow-lg btn-shimmer btn-interactive btn-pulse-emerald">
-          <i data-lucide="message-circle" class="w-4 h-4"></i> Confirmar Asistencia por WhatsApp
+        <button id="sendWhatsAppRSVP" class="w-full py-4 sm:py-5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl text-base sm:text-lg font-bold flex items-center justify-center gap-3 shadow-lg btn-shimmer btn-interactive btn-pulse-emerald">
+          <i data-lucide="message-circle" class="w-6 h-6"></i> Confirmar Asistencia por WhatsApp
         </button>
       </div>
     </section>
@@ -417,60 +782,60 @@
   </main>
 
   <!-- ========================================== -->
-  <!-- 3. SCRIPT: FILTRADO DINÁMICO & ANIMACIONES  -->
+  <!-- 3. SCRIPT: CONTROL DINÁMICO & CUENTA ATRÁS -->
   <!-- ========================================== -->
   <script>
     lucide.createIcons();
 
-    // 1. Leer parámetro de la URL (?plan=esencial / signature / vip)
     const urlParams = new URLSearchParams(window.location.search);
-    const plan = (urlParams.get('plan') || 'signature').toLowerCase();
+    const plan = (urlParams.get('plan') || 'vip').toLowerCase();
 
-    // 2. Elementos a ocultar o mostrar según el plan
-    const featureAudio = document.getElementById('feature-audio');
-    const featureGaleria = document.getElementById('feature-galeria');
-    const featureItinerario = document.getElementById('feature-itinerario');
-    const featureRegalos = document.getElementById('feature-regalos');
-    const featurePases = document.getElementById('feature-pases');
     const planBadge = document.getElementById('planBadge');
+    const mensajeEsencial = document.getElementById('mensaje-esencial');
+    const mensajeVip = document.getElementById('mensaje-vip');
+    const featurePadrinos = document.getElementById('feature-padrinos');
+    const galeriaBadge = document.getElementById('galeria-badge');
+    const galeriaVipExtra = document.getElementById('galeria-vip-extra');
+    const featureItinerario = document.getElementById('feature-itinerario');
+    const featurePases = document.getElementById('feature-pases');
     const bgMusic = document.getElementById('bgMusic');
 
     if (plan === 'esencial') {
       planBadge.textContent = 'Demo: Paquete Esencial';
-      if (featureAudio) featureAudio.classList.add('hidden');
-      if (featureGaleria) featureGaleria.classList.add('hidden');
+      if (mensajeEsencial) mensajeEsencial.classList.remove('hidden');
+      if (mensajeVip) mensajeVip.classList.add('hidden');
+      if (galeriaBadge) galeriaBadge.textContent = '3 Fotos';
+      if (galeriaVipExtra) galeriaVipExtra.classList.add('hidden');
+      if (featurePadrinos) featurePadrinos.classList.add('hidden');
       if (featureItinerario) featureItinerario.classList.add('hidden');
-      if (featureRegalos) featureRegalos.classList.add('hidden');
       if (featurePases) featurePases.classList.add('hidden');
-    } else if (plan === 'signature') {
-      planBadge.textContent = 'Demo: Paquete Signature';
-      if (featureItinerario) featureItinerario.classList.add('hidden');
-    } else if (plan === 'vip') {
-      planBadge.textContent = 'Demo: Paquete All-Inclusive VIP';
+    } else {
+      planBadge.textContent = 'Demo: Paquete Signature VIP';
+      if (mensajeEsencial) mensajeEsencial.classList.add('hidden');
+      if (mensajeVip) mensajeVip.classList.remove('hidden');
+      if (galeriaBadge) galeriaBadge.textContent = '10 Fotos';
+      if (galeriaVipExtra) galeriaVipExtra.classList.remove('hidden');
+      if (featurePadrinos) featurePadrinos.classList.remove('hidden');
+      if (featureItinerario) featureItinerario.classList.remove('hidden');
+      if (featurePases) featurePases.classList.remove('hidden');
     }
 
-    // 3. Lógica del sobre con corona y reproducción de audio
     const envelopeScreen = document.getElementById('envelopeScreen');
     const unsealBtn = document.getElementById('unsealBtn');
     const invitationContent = document.getElementById('invitationContent');
     const toggleMusicBtn = document.getElementById('toggleMusicBtn');
     const musicStatusText = document.getElementById('musicStatusText');
-    let isMusicPlaying = plan !== 'esencial';
 
     unsealBtn.addEventListener('click', () => {
       envelopeScreen.classList.add('opacity-0', 'pointer-events-none');
-      
-      if (plan !== 'esencial' && bgMusic) {
+      if (bgMusic) {
         bgMusic.volume = 0.65;
         bgMusic.play().catch(err => console.log("Audio en espera de interacción:", err));
       }
-
       setTimeout(() => {
         envelopeScreen.classList.add('hidden');
         invitationContent.classList.remove('hidden');
         window.scrollTo({ top: 0, behavior: 'instant' });
-
-        // Inicializar animaciones al hacer scroll
         initScrollReveal();
       }, 500);
     });
@@ -480,19 +845,16 @@
         if (!bgMusic) return;
         if (bgMusic.paused) {
           bgMusic.play();
-          isMusicPlaying = true;
           musicStatusText.textContent = 'Sonando';
           toggleMusicBtn.classList.remove('opacity-50');
         } else {
           bgMusic.pause();
-          isMusicPlaying = false;
           musicStatusText.textContent = 'Pausado';
           toggleMusicBtn.classList.add('opacity-50');
         }
       });
     }
 
-    // 4. Observador cinemático suave con scroll
     function initScrollReveal() {
       const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -504,19 +866,48 @@
         threshold: 0.1,
         rootMargin: '0px 0px -30px 0px'
       });
-
       document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     }
 
-    // 5. Envío de confirmación por WhatsApp
+    const partyDate = new Date('2026-11-14T20:00:00').getTime();
+    const daysEl = document.getElementById('countdown-days');
+    const hoursEl = document.getElementById('countdown-hours');
+    const minutesEl = document.getElementById('countdown-minutes');
+    const secondsEl = document.getElementById('countdown-seconds');
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = partyDate - now;
+
+      if (distance <= 0) {
+        if (daysEl) daysEl.textContent = '00';
+        if (hoursEl) hoursEl.textContent = '00';
+        if (minutesEl) minutesEl.textContent = '00';
+        if (secondsEl) secondsEl.textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+      if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+      if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+      if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
     document.getElementById('sendWhatsAppRSVP').addEventListener('click', () => {
       const name = document.getElementById('guestName').value.trim() || 'Invitado/a';
       const attendance = document.getElementById('guestAttendance').value === 'si' ? '¡Confirmo que sí voy!' : 'Lamentablemente no podré asistir';
       const tickets = featurePases && !featurePases.classList.contains('hidden') 
         ? ` (${document.getElementById('guestTickets').value} pases)` 
         : '';
-      
-      const message = `¡Hola Valentina! Soy ${name}. ${attendance} a tus XV Años${tickets}. ¡Muchas felicidades! 🎉`;
+      const message = `¡Hola Valentina! Soy ${name}. ${attendance} a tus XV Años el 14 de Noviembre de 2026${tickets}. ¡Muchas felicidades! 🎉`;
       window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
     });
   </script>

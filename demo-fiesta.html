@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gala de Graduación 2026 — Pase VIP & Acceso</title>
+  <title>Gala de Graduación 2026 — Invitación Digital</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -33,8 +33,8 @@
             serif: ['"Cormorant Garamond"', 'serif'],
           },
           boxShadow: {
-            'gold-glow': '0 0 35px -5px rgba(212, 175, 55, 0.25)',
-            'ticket-shadow': '0 20px 40px -10px rgba(0,0,0,0.8)'
+            'gold-glow': '0 0 35px -5px rgba(212, 175, 55, 0.28)',
+            'card-soft': '0 6px 24px -2px rgba(0, 0, 0, 0.4)'
           }
         }
       }
@@ -45,16 +45,14 @@
     * { font-family: 'Plus Jakarta Sans', sans-serif; }
     .serif { font-family: 'Cormorant Garamond', serif; }
 
-    /* Ecualizador animado */
     @keyframes soundwave {
-      0%, 100% { height: 4px; }
-      50% { height: 16px; }
+      0%, 100% { height: 6px; }
+      50% { height: 22px; }
     }
     .sound-bar {
       animation: soundwave 1s ease-in-out infinite alternate;
     }
 
-    /* Zoom cinemático continuo en la foto de portada */
     @keyframes slowHeroZoom {
       0% { transform: scale(1); }
       50% { transform: scale(1.08); }
@@ -65,7 +63,6 @@
       will-change: transform;
     }
 
-    /* 1. ENTRADA ULTRA SUAVE CINEMÁTICA CON BLUR */
     .reveal {
       opacity: 0;
       transform: translateY(22px) scale(0.985);
@@ -87,7 +84,6 @@
     .delay-200 { transition-delay: 200ms; }
     .delay-300 { transition-delay: 300ms; }
 
-    /* 2. BOTONES INTERACTIVOS CON BRILLO LÍQUIDO (SHIMMER) */
     @keyframes shimmerSweep {
       0% { transform: translateX(-150%) skewX(-20deg); }
       40%, 100% { transform: translateX(250%) skewX(-20deg); }
@@ -108,7 +104,7 @@
       background: linear-gradient(
         90deg, 
         transparent, 
-        rgba(255, 255, 255, 0.28), 
+        rgba(255, 255, 255, 0.35), 
         transparent
       );
       transform: translateX(-150%) skewX(-20deg);
@@ -116,7 +112,6 @@
       pointer-events: none;
     }
 
-    /* Microinteracción de pulsación elástica */
     .btn-interactive {
       transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
       cursor: pointer;
@@ -124,24 +119,23 @@
 
     .btn-interactive:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px -4px rgba(212, 175, 55, 0.3);
+      box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.35);
     }
 
     .btn-interactive:active {
-      transform: scale(0.96) translateY(0);
+      transform: scale(0.97) translateY(0);
     }
 
-    /* Pulso verde de WhatsApp */
     @keyframes softPulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
-      50% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+      50% { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
     }
     .btn-pulse-emerald {
       animation: softPulse 2.8s infinite;
     }
   </style>
 </head>
-<body class="bg-[#090909] text-champagne antialiased selection:bg-gold/30 selection:text-white">
+<body class="bg-[#090909] text-champagne antialiased selection:bg-gold/30 selection:text-white text-base">
 
   <!-- Pista de audio local para Fiesta / Gala -->
   <audio id="bgMusic" loop preload="auto">
@@ -152,212 +146,476 @@
   <!-- 1. PANTALLA INICIAL: APERTURA DE ENTRADA   -->
   <!-- ========================================== -->
   <div id="envelopeScreen" class="fixed inset-0 z-50 bg-[#060606] flex flex-col items-center justify-center p-6 text-center transition-all duration-700">
-    <div class="max-w-sm w-full bg-[#121212] border border-gold/20 rounded-3xl p-8 shadow-2xl flex flex-col items-center relative overflow-hidden">
+    <div class="max-w-lg w-full bg-[#121212] border-2 border-gold/30 rounded-3xl p-8 sm:p-12 shadow-2xl flex flex-col items-center relative overflow-hidden">
       
-      <!-- Insignia del plan activo -->
-      <div id="planBadge" class="mb-4 text-[10px] text-gold uppercase tracking-[0.2em] bg-gold/10 px-3 py-1 rounded-full border border-gold/30">
-        Demo: Paquete All-Inclusive VIP
+      <div class="absolute -top-12 -right-12 w-56 h-56 bg-gold/15 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div id="planBadge" class="mb-4 text-sm font-bold text-gold uppercase tracking-[0.25em] bg-gold/10 px-5 py-2 rounded-full border border-gold/30">
+        Demo: Paquete Signature VIP
       </div>
 
-      <div class="inline-flex items-center gap-1.5 text-gold text-[10px] tracking-[0.3em] uppercase mb-2">
-        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Pase Digital Oficial
+      <div class="inline-flex items-center gap-2 text-gold text-sm tracking-[0.3em] uppercase mb-2 font-semibold">
+        <i data-lucide="sparkles" class="w-4 h-4"></i> Invitación Oficial
       </div>
 
-      <!-- Botón de apertura con interacción elástica -->
-      <button id="unsealBtn" class="relative my-6 group cursor-pointer btn-interactive">
-        <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-gold-light via-gold to-gold-dark flex items-center justify-center text-black font-bold text-2xl shadow-gold-glow group-hover:scale-105 transition-transform border border-yellow-200">
-          <i data-lucide="qr-code" class="w-10 h-10 text-black"></i>
+      <!-- Botón táctil de apertura -->
+      <button id="unsealBtn" class="relative my-7 group cursor-pointer btn-interactive">
+        <div class="w-28 h-28 rounded-3xl bg-gradient-to-br from-gold-light via-gold to-gold-dark flex items-center justify-center text-black font-bold text-3xl shadow-gold-glow group-hover:scale-105 transition-transform border-2 border-yellow-200">
+          <i data-lucide="party-popper" class="w-14 h-14 text-black"></i>
         </div>
-        <div class="absolute -inset-2 rounded-2xl border border-gold/40 animate-ping"></div>
+        <div class="absolute -inset-2.5 rounded-3xl border-2 border-gold/40 animate-ping"></div>
       </button>
 
-      <h2 class="serif text-3xl italic text-champagne mb-1">Gala de Graduación</h2>
-      <p class="text-xs text-gray-400 mb-6">Toca el código para verificar y ver tu boleto</p>
+      <h2 class="serif text-5xl sm:text-6xl italic text-champagne mb-2">Gala de Graduación</h2>
+      <p class="text-base text-gray-300 mb-6 font-medium">Toca el botón para abrir la invitación</p>
       
-      <span class="text-[10px] text-gold/90 border border-gold/30 px-3 py-1 rounded-full uppercase tracking-widest bg-gold/5">
-        Generación 2022 — 2026
-      </span>
+      <div class="flex items-center gap-2.5 text-base sm:text-lg text-gold bg-gold/10 border border-gold/30 px-6 py-2.5 rounded-full font-bold">
+        <i data-lucide="calendar" class="w-5 h-5 text-gold"></i>
+        <span>Viernes, 27 de Noviembre de 2026</span>
+      </div>
     </div>
   </div>
 
   <!-- ========================================== -->
-  <!-- 2. INVITACIÓN Y PASE DIGITAL COMPLETO     -->
+  <!-- 2. INVITACIÓN COMPLETA                     -->
   <!-- ========================================== -->
-  <main id="invitationContent" class="hidden min-h-screen max-w-md mx-auto bg-[#101010] border-x border-white/5 relative pb-20 shadow-2xl">
+  <main id="invitationContent" class="hidden min-h-screen max-w-xl mx-auto bg-[#101010] border-x border-white/10 relative pb-32 shadow-2xl">
     
-    <!-- BARRA DE MÚSICA (Signature y VIP) -->
-    <div id="feature-audio" class="sticky top-0 z-30 bg-[#101010]/85 backdrop-blur-md px-4 py-3 flex justify-between items-center border-b border-white/5">
-      <div class="flex items-center gap-2">
-        <div class="w-2 h-2 rounded-full bg-gold animate-pulse"></div>
-        <span class="text-[11px] text-gray-200">Coldplay — A Sky Full of Stars</span>
+    <!-- BARRA DE MÚSICA FLOTANTE -->
+    <div id="feature-audio" class="sticky top-0 z-30 bg-[#101010]/95 backdrop-blur-md px-6 py-4 flex justify-between items-center border-b border-white/10 shadow-sm">
+      <div class="flex items-center gap-3">
+        <div class="w-3 h-3 rounded-full bg-gold animate-pulse"></div>
+        <span class="text-sm sm:text-base text-gray-200 serif italic font-bold">Coldplay — A Sky Full of Stars</span>
       </div>
-      <button id="toggleMusicBtn" class="flex items-center gap-1.5 text-xs text-gold btn-interactive">
-        <div class="flex items-end gap-0.5 h-3.5 mr-1">
+      <button id="toggleMusicBtn" class="flex items-center gap-2 text-sm sm:text-base text-gold font-bold btn-interactive bg-gold/10 hover:bg-gold/20 px-4 py-2 rounded-full border border-gold/30">
+        <div class="flex items-end gap-1 h-4">
           <div class="w-0.5 bg-gold rounded-full sound-bar" style="animation-delay: 0.1s;"></div>
           <div class="w-0.5 bg-gold rounded-full sound-bar" style="animation-delay: 0.3s;"></div>
           <div class="w-0.5 bg-gold rounded-full sound-bar" style="animation-delay: 0.2s;"></div>
         </div>
-        <span id="musicStatusText" class="text-[10px] uppercase tracking-wider">Sonando</span>
+        <span id="musicStatusText" class="text-xs sm:text-sm uppercase tracking-wider">Sonando</span>
       </button>
     </div>
 
-    <!-- ENCABEZADO CON ZOOM CINEMÁTICO (Todos los paquetes) -->
-    <header class="relative h-72 overflow-hidden flex flex-col justify-end p-6 text-center">
-      <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1200&auto=format&fit=crop" alt="Graduación Gala" class="hero-zoom absolute inset-0 w-full h-full object-cover filter brightness-[0.4] contrast-110" />
-      <div class="absolute inset-0 bg-gradient-to-t from-[#101010] via-transparent to-black/30"></div>
+    <!-- ENCABEZADO CON ZOOM CINEMÁTICO -->
+    <header class="relative h-[560px] overflow-hidden flex flex-col justify-end p-8 sm:p-10 text-center">
+      <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1200&auto=format&fit=crop" alt="Graduación Gala" class="hero-zoom absolute inset-0 w-full h-full object-cover filter brightness-[0.45] contrast-110" />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#101010] via-transparent to-black/40"></div>
       
-      <div class="relative z-10 reveal">
-        <span class="text-gold text-[10px] uppercase tracking-[0.3em] font-semibold block mb-1">Celebración de Fin de Grado</span>
-        <h1 class="serif text-4xl italic text-champagne mb-1">Noche de Gala 2026</h1>
-        <p class="text-xs text-gray-300 font-light">Facultad de Ingeniería & Negocios</p>
+      <div class="relative z-10 reveal bg-[#141414]/90 backdrop-blur-sm border border-gold/30 rounded-3xl p-7 shadow-gold-glow">
+        <span class="text-gold text-sm sm:text-base uppercase tracking-[0.35em] font-bold block mb-2">Celebración de Fin de Grado</span>
+        <h1 class="serif text-5xl sm:text-6xl italic text-champagne mb-2">Noche de Gala 2026</h1>
+        <p class="text-base sm:text-lg text-gray-300 font-light tracking-widest uppercase">Facultad de Ingeniería & Negocios</p>
       </div>
     </header>
 
-    <!-- EL PASE DIGITAL VIP CON QR (Solo VIP) -->
-    <section id="feature-qr" class="p-6">
-      <div class="reveal bg-gradient-to-b from-[#191919] to-[#121212] border border-gold/30 rounded-3xl p-6 shadow-ticket-shadow relative overflow-hidden">
+    <!-- BLOQUE: FECHA DE LA GALA -->
+    <section class="p-8 sm:p-10 text-center">
+      <!-- SEPARADOR PROTAGONISTA: HERÁLDICA GEOMÉTRICA BLACK TIE -->
+      <div class="relative flex items-center justify-center my-6">
+        <div class="flex-1 flex items-center">
+          <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-gold/50 to-gold"></div>
+          <div class="w-2.5 h-2.5 rotate-45 border-2 border-gold bg-[#101010] -mr-1.5 z-10"></div>
+        </div>
+        <div class="mx-5 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-gold/15 rounded-2xl blur-lg"></div>
+          <div class="relative px-6 py-2.5 bg-[#161616] border-2 border-gold/70 rounded-2xl shadow-gold-glow flex items-center gap-3">
+            <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+            <i data-lucide="gem" class="w-6 h-6 text-gold"></i>
+            <span class="font-mono text-xs uppercase tracking-[0.3em] text-gold font-bold">GALA VIP</span>
+            <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+          </div>
+        </div>
+        <div class="flex-1 flex items-center">
+          <div class="w-2.5 h-2.5 rotate-45 border-2 border-gold bg-[#101010] -ml-1.5 z-10"></div>
+          <div class="w-full h-[2px] bg-gradient-to-l from-transparent via-gold/50 to-gold"></div>
+        </div>
+      </div>
+
+      <div class="reveal max-w-md mx-auto bg-[#161616] border-2 border-gold/30 rounded-3xl p-8 shadow-card-soft">
+        <span class="text-sm uppercase tracking-[0.3em] text-gold font-extrabold block mb-4">La Gran Cita</span>
+        <div class="flex items-center justify-center gap-4 my-3">
+          <span class="text-3xl font-serif italic text-gold font-semibold">Viernes</span>
+          <span class="serif text-7xl font-bold text-champagne border-x-2 border-gold/30 px-5">27</span>
+          <span class="text-3xl font-serif italic text-gold font-semibold">Noviembre</span>
+        </div>
+        <p class="serif text-4xl font-bold text-champagne mt-3">2026</p>
+        <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-center gap-2 text-base text-gray-300 font-semibold">
+          <i data-lucide="map-pin" class="w-5 h-5 text-gold"></i>
+          <span>Poliforum Gran Salón Cristal</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENSAJE DE GRADUADOS -->
+    <section class="p-8 sm:p-10 text-center bg-[#141414]/60">
+      <!-- SEPARADOR PROTAGONISTA -->
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="flex-1 flex items-center">
+          <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-gold/50 to-gold"></div>
+          <div class="w-2.5 h-2.5 rotate-45 border-2 border-gold bg-[#101010] -mr-1.5 z-10"></div>
+        </div>
+        <div class="mx-5 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-gold/15 rounded-2xl blur-lg"></div>
+          <div class="relative px-6 py-2.5 bg-[#161616] border-2 border-gold/70 rounded-2xl shadow-gold-glow flex items-center gap-3">
+            <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+            <i data-lucide="gem" class="w-6 h-6 text-gold"></i>
+            <span class="font-mono text-xs uppercase tracking-[0.3em] text-gold font-bold">GALA VIP</span>
+            <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+          </div>
+        </div>
+        <div class="flex-1 flex items-center">
+          <div class="w-2.5 h-2.5 rotate-45 border-2 border-gold bg-[#101010] -ml-1.5 z-10"></div>
+          <div class="w-full h-[2px] bg-gradient-to-l from-transparent via-gold/50 to-gold"></div>
+        </div>
+      </div>
+
+      <div class="reveal max-w-lg mx-auto">
+        <div class="w-14 h-14 rounded-full bg-gold/10 text-gold flex items-center justify-center mx-auto mb-4 border border-gold/25">
+          <i data-lucide="quote" class="w-7 h-7"></i>
+        </div>
+        <span class="text-sm text-gold uppercase tracking-[0.3em] font-bold block mb-4">Palabras de la Generación</span>
         
-        <!-- Recortes de Boleto -->
-        <div class="absolute -left-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#101010] border-r border-gold/30"></div>
-        <div class="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#101010] border-l border-gold/30"></div>
-
-        <div class="flex justify-between items-start border-b border-white/10 pb-4 mb-4">
-          <div>
-            <span class="text-[9px] uppercase tracking-widest text-gold font-mono block">TICKET ID</span>
-            <span class="text-sm font-bold font-mono text-champagne">#GRD-8842-VIP</span>
-          </div>
-          <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider font-semibold">
-            Válido en Puerta
-          </span>
+        <!-- Versión Esencial -->
+        <div id="mensaje-esencial">
+          <p class="serif text-2xl sm:text-3xl italic text-champagne leading-relaxed">
+            "El final de este camino es solo el inicio de una historia inolvidable. Gracias por celebrar este gran logro junto a nosotros."
+          </p>
         </div>
 
-        <div class="flex flex-col items-center justify-center my-3">
-          <div class="p-3 bg-white rounded-2xl shadow-lg border-2 border-gold">
-            <svg class="w-36 h-36" viewBox="0 0 100 100" fill="black">
-              <path d="M0 0h35v35H0V0zm5 5v25h25V5H5zm5 5h15v15H10V10zM65 0h35v35H65V0zm5 5v25h25V5H70zm5 5h15v15H75V10zM0 65h35v35H0V65zm5 5v25h25V70H5zm5 5h15v15H10V75zM45 5h10v10H45V5zm10 15h10v10H55V20zm-10 10h10v10H45V30zm20 15h10v10H65V45zm-15 10h10v10H50V55zm15 15h10v10H65V70zm15 0h10v10H80V70zm-35 15h10v10H45V85zm35 0h10v10H80V85zm5-15h10v10H85V70zm-40-25h10v10H45V45zm15 0h10v10H60V45z"/>
-            </svg>
-          </div>
-          <span class="text-[10px] text-gray-400 font-mono mt-3">Muestra este código al llegar a recepción</span>
+        <!-- Versión VIP -->
+        <div id="mensaje-vip" class="hidden">
+          <h3 class="serif text-3xl sm:text-4xl italic text-gold mb-4 font-semibold">Brindis por Nuestra Meta Cumplida</h3>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed font-normal mb-5">
+            Años de esfuerzo, desvelos, proyectos y amistades entrañables convergen en esta noche. Queremos compartir el orgullo de cerrar un ciclo que nos transforma como profesionistas y personas. ¡Bienvenidos a nuestra gran noche de gala!
+          </p>
+          <span class="serif text-2xl sm:text-3xl italic text-gold block font-bold">— Generación 2022 – 2026</span>
         </div>
-
-        <div class="border-t border-dashed border-white/10 pt-4 mt-2 grid grid-cols-2 gap-2 text-xs">
-          <div>
-            <span class="text-[9px] text-gray-400 block uppercase">Titular</span>
-            <span class="font-semibold text-champagne">Invitado VIP + Acompañante</span>
-          </div>
-          <div class="text-right">
-            <span class="text-[9px] text-gray-400 block uppercase">Mesa Asignada</span>
-            <span class="font-bold text-gold font-mono">Mesa #12</span>
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <!-- CUENTA REGRESIVA (Todos los paquetes) -->
-    <section class="reveal px-6 py-2 text-center border-b border-white/5">
-      <span class="text-[10px] text-gold uppercase tracking-widest block mb-3">FALTA PARA LA GALA</span>
-      <div class="grid grid-cols-4 gap-2 font-mono">
-        <div class="bg-[#161616] p-2.5 rounded-xl border border-white/5"><span class="text-lg font-bold text-champagne block">12</span><span class="text-[8px] text-gray-400 uppercase">Días</span></div>
-        <div class="bg-[#161616] p-2.5 rounded-xl border border-white/5"><span class="text-lg font-bold text-champagne block">05</span><span class="text-[8px] text-gray-400 uppercase">Horas</span></div>
-        <div class="bg-[#161616] p-2.5 rounded-xl border border-white/5"><span class="text-lg font-bold text-champagne block">18</span><span class="text-[8px] text-gray-400 uppercase">Min</span></div>
-        <div class="bg-[#161616] p-2.5 rounded-xl border border-white/5"><span class="text-lg font-bold text-champagne block">40</span><span class="text-[8px] text-gray-400 uppercase">Seg</span></div>
+    <!-- CUENTA REGRESIVA DINÁMICA REAL -->
+    <section class="reveal p-8 sm:p-10 text-center bg-[#141414]/60">
+      <!-- SEPARADOR PROTAGONISTA -->
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="flex-1 flex items-center">
+          <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-gold/50 to-gold"></div>
+          <div class="w-2.5 h-2.5 rotate-45 border-2 border-gold bg-[#101010] -mr-1.5 z-10"></div>
+        </div>
+        <div class="mx-5 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-gold/15 rounded-2xl blur-lg"></div>
+          <div class="relative px-6 py-2.5 bg-[#161616] border-2 border-gold/70 rounded-2xl shadow-gold-glow flex items-center gap-3">
+            <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+            <i data-lucide="gem" class="w-6 h-6 text-gold"></i>
+            <span class="font-mono text-xs uppercase tracking-[0.3em] text-gold font-bold">GALA VIP</span>
+            <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+          </div>
+        </div>
+        <div class="flex-1 flex items-center">
+          <div class="w-2.5 h-2.5 rotate-45 border-2 border-gold bg-[#101010] -ml-1.5 z-10"></div>
+          <div class="w-full h-[2px] bg-gradient-to-l from-transparent via-gold/50 to-gold"></div>
+        </div>
+      </div>
+
+      <div class="w-14 h-14 rounded-full bg-gold/10 text-gold flex items-center justify-center mx-auto mb-4 border border-gold/25">
+        <i data-lucide="hourglass" class="w-7 h-7"></i>
+      </div>
+      <span class="text-sm text-gold uppercase tracking-widest font-extrabold block mb-6">FALTA PARA LA GALA</span>
+      <div class="grid grid-cols-4 gap-3 sm:gap-4 font-mono">
+        <div class="bg-[#161616] border-2 border-gold/20 p-5 rounded-2xl shadow-card-soft">
+          <span id="countdown-days" class="text-3xl sm:text-4xl font-bold text-champagne block">--</span>
+          <span class="text-xs sm:text-sm text-gray-400 uppercase font-bold mt-1 block">Días</span>
+        </div>
+        <div class="bg-[#161616] border-2 border-gold/20 p-5 rounded-2xl shadow-card-soft">
+          <span id="countdown-hours" class="text-3xl sm:text-4xl font-bold text-champagne block">--</span>
+          <span class="text-xs sm:text-sm text-gray-400 uppercase font-bold mt-1 block">Horas</span>
+        </div>
+        <div class="bg-[#161616] border-2 border-gold/20 p-5 rounded-2xl shadow-card-soft">
+          <span id="countdown-minutes" class="text-3xl sm:text-4xl font-bold text-champagne block">--</span>
+          <span class="text-xs sm:text-sm text-gray-400 uppercase font-bold mt-1 block">Min</span>
+        </div>
+        <div class="bg-[#161616] border-2 border-gold/20 p-5 rounded-2xl shadow-card-soft">
+          <span id="countdown-seconds" class="text-3xl sm:text-4xl font-bold text-champagne block">--</span>
+          <span class="text-xs sm:text-sm text-gray-400 uppercase font-bold mt-1 block">Seg</span>
+        </div>
       </div>
     </section>
 
-    <!-- LUGAR & ESTACIONAMIENTO (Todos los paquetes) -->
-    <section class="p-6 space-y-4 border-b border-white/5">
-      <h3 class="serif text-2xl text-center italic text-gold mb-2 reveal">Lugar & Acceso Vehicular</h3>
+    <!-- GALERÍA DE RECUERDOS (3 fotos en Esencial / hasta 10 fotos en VIP) -->
+    <section class="p-8 sm:p-10">
+      <!-- SEPARADOR PROTAGONISTA -->
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="flex-1 flex items-center">
+          <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-gold/50 to-gold"></div>
+          <div class="w-2.5 h-2.5 rotate-45 border-2 border-gold bg-[#101010] -mr-1.5 z-10"></div>
+        </div>
+        <div class="mx-5 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-gold/15 rounded-2xl blur-lg"></div>
+          <div class="relative px-6 py-2.5 bg-[#161616] border-2 border-gold/70 rounded-2xl shadow-gold-glow flex items-center gap-3">
+            <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+            <i data-lucide="gem" class="w-6 h-6 text-gold"></i>
+            <span class="font-mono text-xs uppercase tracking-[0.3em] text-gold font-bold">GALA VIP</span>
+            <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+          </div>
+        </div>
+        <div class="flex-1 flex items-center">
+          <div class="w-2.5 h-2.5 rotate-45 border-2 border-gold bg-[#101010] -ml-1.5 z-10"></div>
+          <div class="w-full h-[2px] bg-gradient-to-l from-transparent via-gold/50 to-gold"></div>
+        </div>
+      </div>
 
-      <div class="reveal bg-[#161616] border border-white/5 rounded-2xl p-5 space-y-3">
-        <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center shrink-0">
-            <i data-lucide="building" class="w-4 h-4"></i>
+      <div class="flex items-center justify-between mb-8 reveal">
+        <div>
+          <span class="text-sm text-gold uppercase tracking-widest font-bold block mb-1">Nuestra Generación</span>
+          <h3 class="serif text-3xl sm:text-5xl italic text-champagne">Momentos de Estudio</h3>
+        </div>
+        <span id="galeria-badge" class="text-sm text-gold bg-gold/10 border border-gold/30 px-4 py-2 rounded-full font-mono font-bold">3 Fotos</span>
+      </div>
+
+      <div class="grid grid-cols-2 gap-5">
+        <div class="reveal h-64 sm:h-72 rounded-3xl overflow-hidden border-2 border-white/10 group shadow-card-soft">
+          <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Recuerdo Generación 1">
+        </div>
+        <div class="reveal delay-100 h-64 sm:h-72 rounded-3xl overflow-hidden border-2 border-white/10 group shadow-card-soft">
+          <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Recuerdo Generación 2">
+        </div>
+        <div class="reveal col-span-2 h-72 sm:h-80 rounded-3xl overflow-hidden border-2 border-white/10 group shadow-card-soft">
+          <img src="https://images.unsplash.com/photo-1525921429624-479b6a26d84d?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Recuerdo Generación 3">
+        </div>
+      </div>
+
+      <div id="galeria-vip-extra" class="grid grid-cols-2 gap-5 mt-5">
+        <div class="reveal h-64 sm:h-72 rounded-3xl overflow-hidden border-2 border-white/10 group shadow-card-soft">
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Recuerdo Generación 4">
+        </div>
+        <div class="reveal delay-100 h-64 sm:h-72 rounded-3xl overflow-hidden border-2 border-white/10 group shadow-card-soft">
+          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Recuerdo Generación 5">
+        </div>
+      </div>
+    </section>
+
+    <!-- ¿DÓNDE & CUÁNDO? & ACCESO VEHICULAR -->
+    <section class="p-8 sm:p-10 space-y-6 bg-[#141414]/60">
+      <!-- SEPARADOR PROTAGONISTA -->
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="flex-1 flex items-center">
+          <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-gold/50 to-gold"></div>
+          <div class="w-2.5 h-2.5 rotate-45 border-2 border-gold bg-[#101010] -mr-1.5 z-10"></div>
+        </div>
+        <div class="mx-5 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-gold/15 rounded-2xl blur-lg"></div>
+          <div class="relative px-6 py-2.5 bg-[#161616] border-2 border-gold/70 rounded-2xl shadow-gold-glow flex items-center gap-3">
+            <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+            <i data-lucide="gem" class="w-6 h-6 text-gold"></i>
+            <span class="font-mono text-xs uppercase tracking-[0.3em] text-gold font-bold">GALA VIP</span>
+            <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+          </div>
+        </div>
+        <div class="flex-1 flex items-center">
+          <div class="w-2.5 h-2.5 rotate-45 border-2 border-gold bg-[#101010] -ml-1.5 z-10"></div>
+          <div class="w-full h-[2px] bg-gradient-to-l from-transparent via-gold/50 to-gold"></div>
+        </div>
+      </div>
+
+      <div class="text-center reveal">
+        <span class="text-sm text-gold uppercase tracking-[0.3em] font-bold block mb-2">Locaciones</span>
+        <h3 class="serif text-4xl sm:text-5xl italic text-champagne">¿Dónde & Cuándo?</h3>
+      </div>
+
+      <div class="reveal bg-[#161616] border-2 border-white/10 rounded-3xl p-7 space-y-5 shadow-card-soft">
+        <div class="flex items-center gap-4">
+          <div class="w-14 h-14 rounded-2xl bg-gold/10 text-gold flex items-center justify-center shrink-0 border border-gold/30">
+            <i data-lucide="building" class="w-7 h-7"></i>
           </div>
           <div>
-            <h4 class="font-semibold text-sm">Centro de Convenciones Poliforum</h4>
-            <p class="text-xs text-gold">Gran Salón Cristal • Entrada Puerta 3</p>
+            <h4 class="font-bold text-xl text-champagne">Centro de Convenciones Poliforum</h4>
+            <p class="text-base text-gold font-semibold">Gran Salón Cristal • Entrada Puerta 3</p>
           </div>
         </div>
 
-        <div class="p-3 bg-black/40 rounded-xl text-xs space-y-2 border border-white/5 text-[#9E9C94]">
-          <p class="flex items-center gap-2"><i data-lucide="car" class="w-3.5 h-3.5 text-gold shrink-0"></i> <strong>Valet Parking:</strong> Disponible sin costo en la entrada principal.</p>
-          <p class="flex items-center gap-2"><i data-lucide="clock" class="w-3.5 h-3.5 text-gold shrink-0"></i> <strong>Recepción:</strong> Registro de asistentes desde las 19:30 hrs.</p>
+        <div class="p-5 bg-black/60 rounded-2xl text-base space-y-3 border border-white/10 text-gray-300">
+          <p class="flex items-center gap-3">
+            <i data-lucide="car" class="w-5 h-5 text-gold shrink-0"></i>
+            <span><strong>Valet Parking:</strong> Disponible sin costo en la entrada principal.</span>
+          </p>
+          <p class="flex items-center gap-3">
+            <i data-lucide="clock" class="w-5 h-5 text-gold shrink-0"></i>
+            <span><strong>Recepción & Registro:</strong> Desde las 19:30 hrs.</span>
+          </p>
         </div>
 
-        <div class="grid grid-cols-2 gap-2 pt-1">
-          <a href="https://maps.google.com" target="_blank" class="py-2.5 bg-[#202020] hover:bg-gold/20 text-champagne border border-white/10 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all btn-interactive">
-            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i> Google Maps
+        <div class="grid grid-cols-2 gap-4 pt-2">
+          <a href="https://maps.google.com" target="_blank" class="py-4 bg-[#202020] hover:bg-gold/20 text-champagne border-2 border-white/10 hover:border-gold rounded-2xl text-base font-bold flex items-center justify-center gap-2 transition-all btn-interactive">
+            <i data-lucide="map-pin" class="w-5 h-5 text-gold"></i> Google Maps
           </a>
-          <a href="https://waze.com" target="_blank" class="py-2.5 bg-[#202020] hover:bg-gold/20 text-champagne border border-white/10 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all btn-interactive">
-            <i data-lucide="navigation" class="w-3.5 h-3.5 text-gold"></i> Abrir Waze
+          <a href="https://waze.com" target="_blank" class="py-4 bg-[#202020] hover:bg-gold/20 text-champagne border-2 border-white/10 hover:border-gold rounded-2xl text-base font-bold flex items-center justify-center gap-2 transition-all btn-interactive">
+            <i data-lucide="navigation" class="w-5 h-5 text-gold"></i> Abrir Waze
           </a>
         </div>
       </div>
     </section>
 
-    <!-- CRONOGRAMA DE LA NOCHE (Solo VIP) -->
-    <section id="feature-itinerario" class="p-6 border-b border-white/5">
-      <h3 class="serif text-2xl text-center italic text-gold mb-4 reveal">Cronograma de la Noche</h3>
-      <div class="space-y-3 text-xs">
-        <div class="reveal flex items-center gap-3 bg-[#161616] p-3 rounded-xl border border-white/5">
-          <span class="font-mono text-gold font-bold w-16">19:30 h</span>
-          <span>Alfombra Roja & Registro QR en Puerta</span>
+    <!-- CRONOGRAMA DE LA NOCHE (Exclusivo VIP - Separador integrado) -->
+    <section id="feature-itinerario" class="p-8 sm:p-10">
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="flex-1 flex items-center">
+          <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-gold/50 to-gold"></div>
+          <div class="w-2.5 h-2.5 rotate-45 border-2 border-gold bg-[#101010] -mr-1.5 z-10"></div>
         </div>
-        <div class="reveal delay-100 flex items-center gap-3 bg-[#161616] p-3 rounded-xl border border-white/5">
-          <span class="font-mono text-gold font-bold w-16">20:30 h</span>
-          <span>Brindis de Honor & Entrega de Reconocimientos</span>
+        <div class="mx-5 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-gold/15 rounded-2xl blur-lg"></div>
+          <div class="relative px-6 py-2.5 bg-[#161616] border-2 border-gold/70 rounded-2xl shadow-gold-glow flex items-center gap-3">
+            <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+            <i data-lucide="gem" class="w-6 h-6 text-gold"></i>
+            <span class="font-mono text-xs uppercase tracking-[0.3em] text-gold font-bold">GALA VIP</span>
+            <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+          </div>
         </div>
-        <div class="reveal delay-200 flex items-center gap-3 bg-[#161616] p-3 rounded-xl border border-white/5">
-          <span class="font-mono text-gold font-bold w-16">21:30 h</span>
-          <span>Cena de 3 Tiempos</span>
+        <div class="flex-1 flex items-center">
+          <div class="w-2.5 h-2.5 rotate-45 border-2 border-gold bg-[#101010] -ml-1.5 z-10"></div>
+          <div class="w-full h-[2px] bg-gradient-to-l from-transparent via-gold/50 to-gold"></div>
         </div>
-        <div class="reveal delay-300 flex items-center gap-3 bg-[#161616] p-3 rounded-xl border border-white/5">
-          <span class="font-mono text-gold font-bold w-16">23:00 h</span>
-          <span>Banda en Vivo, DJ Set & After Party</span>
+      </div>
+
+      <div class="text-center mb-8 reveal">
+        <div class="w-14 h-14 rounded-full bg-gold/10 text-gold flex items-center justify-center mx-auto mb-4 border border-gold/25">
+          <i data-lucide="calendar-check" class="w-7 h-7"></i>
+        </div>
+        <span class="text-sm text-gold uppercase tracking-[0.25em] font-bold block mb-1">Programa Oficial</span>
+        <h3 class="serif text-4xl sm:text-5xl italic text-champagne">Cronograma de la Noche</h3>
+      </div>
+
+      <div class="space-y-4 text-base">
+        <div class="reveal flex items-center gap-4 bg-[#161616] p-5 rounded-2xl border border-white/10 shadow-card-soft">
+          <div class="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center shrink-0">
+            <i data-lucide="glass-water" class="w-6 h-6 text-gold"></i>
+          </div>
+          <div class="flex-1">
+            <span class="font-mono text-gold font-extrabold text-sm block">19:30 HRS</span>
+            <span class="text-lg text-champagne font-bold">Alfombra Roja & Cóctel de Bienvenida</span>
+          </div>
+        </div>
+
+        <div class="reveal delay-100 flex items-center gap-4 bg-[#161616] p-5 rounded-2xl border border-white/10 shadow-card-soft">
+          <div class="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center shrink-0">
+            <i data-lucide="award" class="w-6 h-6 text-gold"></i>
+          </div>
+          <div class="flex-1">
+            <span class="font-mono text-gold font-extrabold text-sm block">20:30 HRS</span>
+            <span class="text-lg text-champagne font-bold">Brindis de Honor & Entrega de Reconocimientos</span>
+          </div>
+        </div>
+
+        <div class="reveal delay-200 flex items-center gap-4 bg-[#161616] p-5 rounded-2xl border border-white/10 shadow-card-soft">
+          <div class="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center shrink-0">
+            <i data-lucide="utensils" class="w-6 h-6 text-gold"></i>
+          </div>
+          <div class="flex-1">
+            <span class="font-mono text-gold font-extrabold text-sm block">21:30 HRS</span>
+            <span class="text-lg text-champagne font-bold">Cena de Gala de 3 Tiempos</span>
+          </div>
+        </div>
+
+        <div class="reveal delay-300 flex items-center gap-4 bg-[#161616] p-5 rounded-2xl border border-white/10 shadow-card-soft">
+          <div class="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center shrink-0">
+            <i data-lucide="music" class="w-6 h-6 text-gold"></i>
+          </div>
+          <div class="flex-1">
+            <span class="font-mono text-gold font-extrabold text-sm block">23:00 HRS</span>
+            <span class="text-lg text-champagne font-bold">Banda en Vivo, DJ Set & After Party</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- CÓDIGO DE VESTIMENTA (Todos los paquetes) -->
-    <section class="reveal p-6 text-center border-b border-white/5">
-      <h3 class="serif text-2xl italic text-gold mb-1">Código de Vestimenta</h3>
-      <span class="text-sm font-semibold uppercase tracking-wider block mb-2 text-champagne">Etiqueta Rigurosa / Black Tie</span>
-      <p class="text-xs text-gray-400 max-w-xs mx-auto">
-        Caballeros: esmoquin o traje oscuro formal. Damas: vestido largo de gala.
+    <!-- CÓDIGO DE VESTIMENTA -->
+    <section class="reveal p-8 sm:p-10 text-center">
+      <!-- SEPARADOR PROTAGONISTA -->
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="flex-1 flex items-center">
+          <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-gold/50 to-gold"></div>
+          <div class="w-2.5 h-2.5 rotate-45 border-2 border-gold bg-[#101010] -mr-1.5 z-10"></div>
+        </div>
+        <div class="mx-5 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-gold/15 rounded-2xl blur-lg"></div>
+          <div class="relative px-6 py-2.5 bg-[#161616] border-2 border-gold/70 rounded-2xl shadow-gold-glow flex items-center gap-3">
+            <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+            <i data-lucide="gem" class="w-6 h-6 text-gold"></i>
+            <span class="font-mono text-xs uppercase tracking-[0.3em] text-gold font-bold">GALA VIP</span>
+            <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+          </div>
+        </div>
+        <div class="flex-1 flex items-center">
+          <div class="w-2.5 h-2.5 rotate-45 border-2 border-gold bg-[#101010] -ml-1.5 z-10"></div>
+          <div class="w-full h-[2px] bg-gradient-to-l from-transparent via-gold/50 to-gold"></div>
+        </div>
+      </div>
+
+      <div class="w-14 h-14 rounded-full bg-gold/10 text-gold flex items-center justify-center mx-auto mb-4 border border-gold/25">
+        <i data-lucide="sparkles" class="w-7 h-7"></i>
+      </div>
+      <h3 class="serif text-4xl sm:text-5xl italic text-gold mb-3">Código de Vestimenta</h3>
+      <span class="text-lg sm:text-xl font-extrabold uppercase tracking-wider block mb-3 text-champagne">Etiqueta Rigurosa / Black Tie</span>
+      <p class="text-base sm:text-lg text-gray-300 max-w-md mx-auto leading-relaxed">
+        Caballeros: Esmoquin o traje formal oscuro.<br>
+        Damas: Vestido largo de noche de gala.
       </p>
     </section>
 
-    <!-- FORMULARIO DE CONFIRMACIÓN (Adaptado según el paquete) -->
-    <section class="p-6 text-center">
-      <h3 class="serif text-3xl italic text-gold mb-2 reveal">Aviso de Confirmación</h3>
-      <p class="text-xs text-gray-400 mb-6 reveal">Confirma tu asistencia para habilitar el pase de acceso.</p>
+    <!-- FORMULARIO DE CONFIRMACIÓN -->
+    <section class="p-8 sm:p-10 text-center">
+      <!-- SEPARADOR PROTAGONISTA -->
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="flex-1 flex items-center">
+          <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-gold/50 to-gold"></div>
+          <div class="w-2.5 h-2.5 rotate-45 border-2 border-gold bg-[#101010] -mr-1.5 z-10"></div>
+        </div>
+        <div class="mx-5 relative flex items-center justify-center">
+          <div class="absolute inset-0 bg-gold/15 rounded-2xl blur-lg"></div>
+          <div class="relative px-6 py-2.5 bg-[#161616] border-2 border-gold/70 rounded-2xl shadow-gold-glow flex items-center gap-3">
+            <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+            <i data-lucide="gem" class="w-6 h-6 text-gold"></i>
+            <span class="font-mono text-xs uppercase tracking-[0.3em] text-gold font-bold">GALA VIP</span>
+            <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+          </div>
+        </div>
+        <div class="flex-1 flex items-center">
+          <div class="w-2.5 h-2.5 rotate-45 border-2 border-gold bg-[#101010] -ml-1.5 z-10"></div>
+          <div class="w-full h-[2px] bg-gradient-to-l from-transparent via-gold/50 to-gold"></div>
+        </div>
+      </div>
 
-      <div class="reveal bg-[#161616] border border-white/10 rounded-2xl p-5 text-left space-y-4 shadow-xl">
+      <div class="w-14 h-14 rounded-full bg-gold/10 text-gold flex items-center justify-center mx-auto mb-4 border border-gold/25">
+        <i data-lucide="check-circle" class="w-7 h-7"></i>
+      </div>
+      <h3 class="serif text-4xl sm:text-5xl italic text-gold mb-3 reveal">Aviso de Confirmación</h3>
+      <p class="text-base sm:text-lg text-gray-300 mb-8 reveal font-normal">Confirma tu asistencia para coordinar el acceso y lugares.</p>
+
+      <div class="reveal bg-[#161616] border-2 border-gold/30 rounded-3xl p-7 sm:p-8 text-left space-y-6 shadow-gold-glow">
         <div>
-          <label class="block text-[11px] text-gray-400 uppercase tracking-wider mb-1">Nombre Completo del Asistente</label>
-          <input id="guestName" type="text" placeholder="Ej. Lic. Fernando Morales" class="w-full bg-[#101010] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-gold outline-none" />
+          <label class="block text-sm font-bold text-gold uppercase tracking-wider mb-2">Nombre Completo del Asistente</label>
+          <input id="guestName" type="text" placeholder="Ej. Lic. Fernando Morales" class="w-full bg-[#101010] border border-white/20 rounded-2xl px-5 py-4 text-base text-champagne focus:border-gold outline-none" />
         </div>
 
         <div>
-          <label class="block text-[11px] text-gray-400 uppercase tracking-wider mb-1">Estado de Asistencia</label>
-          <select id="guestAttendance" class="w-full bg-[#101010] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-gold outline-none">
-            <option value="si">Confirmar mi pase y asistencia</option>
-            <option value="no">Ceder / Cancelar pase</option>
+          <label class="block text-sm font-bold text-gold uppercase tracking-wider mb-2">Estado de Asistencia</label>
+          <select id="guestAttendance" class="w-full bg-[#101010] border border-white/20 rounded-2xl px-5 py-4 text-base text-champagne focus:border-gold outline-none">
+            <option value="si">Confirmar mi asistencia</option>
+            <option value="no">No podré asistir</option>
           </select>
         </div>
 
-        <!-- Selector de pases (Oculto en Esencial, activo en Signature y VIP) -->
         <div id="feature-pases">
-          <label class="block text-[11px] text-gray-400 uppercase tracking-wider mb-1">Pases Requeridos</label>
-          <select id="guestTickets" class="w-full bg-[#101010] border border-white/10 rounded-xl px-3 py-2 text-xs text-champagne focus:border-gold outline-none">
+          <label class="block text-sm font-bold text-gold uppercase tracking-wider mb-2">Pases Requeridos</label>
+          <select id="guestTickets" class="w-full bg-[#101010] border border-white/20 rounded-2xl px-5 py-4 text-base text-champagne focus:border-gold outline-none">
             <option value="1">1 Pase (Personal)</option>
             <option value="2" selected>2 Pases (Con acompañante)</option>
+            <option value="3">3 Pases (Familia)</option>
           </select>
         </div>
 
-        <button id="sendWhatsAppRSVP" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 shadow-lg btn-shimmer btn-interactive btn-pulse-emerald">
-          <i data-lucide="message-circle" class="w-4 h-4"></i> Enviar Confirmación por WhatsApp
+        <button id="sendWhatsAppRSVP" class="w-full py-4 sm:py-5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl text-base sm:text-lg font-bold flex items-center justify-center gap-3 shadow-lg btn-shimmer btn-interactive btn-pulse-emerald">
+          <i data-lucide="message-circle" class="w-6 h-6"></i> Enviar Confirmación por WhatsApp
         </button>
       </div>
     </section>
@@ -365,59 +623,57 @@
   </main>
 
   <!-- ========================================== -->
-  <!-- 3. SCRIPT: FILTRADO DINÁMICO & ANIMACIONES  -->
+  <!-- 3. SCRIPT: CONTROL DINÁMICO & CUENTA ATRÁS -->
   <!-- ========================================== -->
   <script>
     lucide.createIcons();
 
-    // 1. Leer parámetro de la URL (?plan=esencial / signature / vip)
     const urlParams = new URLSearchParams(window.location.search);
     const plan = (urlParams.get('plan') || 'vip').toLowerCase();
 
-    // 2. Elementos a ocultar o mostrar según el plan
-    const featureAudio = document.getElementById('feature-audio');
-    const featureQr = document.getElementById('feature-qr');
+    const planBadge = document.getElementById('planBadge');
+    const mensajeEsencial = document.getElementById('mensaje-esencial');
+    const mensajeVip = document.getElementById('mensaje-vip');
+    const galeriaBadge = document.getElementById('galeria-badge');
+    const galeriaVipExtra = document.getElementById('galeria-vip-extra');
     const featureItinerario = document.getElementById('feature-itinerario');
     const featurePases = document.getElementById('feature-pases');
-    const planBadge = document.getElementById('planBadge');
     const bgMusic = document.getElementById('bgMusic');
 
     if (plan === 'esencial') {
       planBadge.textContent = 'Demo: Paquete Esencial';
-      if (featureAudio) featureAudio.classList.add('hidden');
-      if (featureQr) featureQr.classList.add('hidden');
+      if (mensajeEsencial) mensajeEsencial.classList.remove('hidden');
+      if (mensajeVip) mensajeVip.classList.add('hidden');
+      if (galeriaBadge) galeriaBadge.textContent = '3 Fotos';
+      if (galeriaVipExtra) galeriaVipExtra.classList.add('hidden');
       if (featureItinerario) featureItinerario.classList.add('hidden');
       if (featurePases) featurePases.classList.add('hidden');
-    } else if (plan === 'signature') {
-      planBadge.textContent = 'Demo: Paquete Signature';
-      if (featureQr) featureQr.classList.add('hidden');
-      if (featureItinerario) featureItinerario.classList.add('hidden');
-    } else if (plan === 'vip') {
-      planBadge.textContent = 'Demo: Paquete All-Inclusive VIP';
+    } else {
+      planBadge.textContent = 'Demo: Paquete Signature VIP';
+      if (mensajeEsencial) mensajeEsencial.classList.add('hidden');
+      if (mensajeVip) mensajeVip.classList.remove('hidden');
+      if (galeriaBadge) galeriaBadge.textContent = 'Álbum Completo';
+      if (galeriaVipExtra) galeriaVipExtra.classList.remove('hidden');
+      if (featureItinerario) featureItinerario.classList.remove('hidden');
+      if (featurePases) featurePases.classList.remove('hidden');
     }
 
-    // 3. Lógica del sobre/pase inicial y reproducción de audio
     const envelopeScreen = document.getElementById('envelopeScreen');
     const unsealBtn = document.getElementById('unsealBtn');
     const invitationContent = document.getElementById('invitationContent');
     const toggleMusicBtn = document.getElementById('toggleMusicBtn');
     const musicStatusText = document.getElementById('musicStatusText');
-    let isMusicPlaying = plan !== 'esencial';
 
     unsealBtn.addEventListener('click', () => {
       envelopeScreen.classList.add('opacity-0', 'pointer-events-none');
-      
-      if (plan !== 'esencial' && bgMusic) {
+      if (bgMusic) {
         bgMusic.volume = 0.6;
-        bgMusic.play().catch(err => console.log("Audio en espera de interacción:", err));
+        bgMusic.play().catch(err => console.log("Audio en espera:", err));
       }
-
       setTimeout(() => {
         envelopeScreen.classList.add('hidden');
         invitationContent.classList.remove('hidden');
         window.scrollTo({ top: 0, behavior: 'instant' });
-
-        // Inicializar animaciones de scroll
         initScrollReveal();
       }, 500);
     });
@@ -427,19 +683,16 @@
         if (!bgMusic) return;
         if (bgMusic.paused) {
           bgMusic.play();
-          isMusicPlaying = true;
           musicStatusText.textContent = 'Sonando';
           toggleMusicBtn.classList.remove('opacity-50');
         } else {
           bgMusic.pause();
-          isMusicPlaying = false;
           musicStatusText.textContent = 'Pausado';
           toggleMusicBtn.classList.add('opacity-50');
         }
       });
     }
 
-    // 4. Observador cinemático suave con scroll
     function initScrollReveal() {
       const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -451,11 +704,41 @@
         threshold: 0.1,
         rootMargin: '0px 0px -30px 0px'
       });
-
       document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     }
 
-    // 5. Envío de WhatsApp
+    const galaDate = new Date('2026-11-27T19:30:00').getTime();
+    const daysEl = document.getElementById('countdown-days');
+    const hoursEl = document.getElementById('countdown-hours');
+    const minutesEl = document.getElementById('countdown-minutes');
+    const secondsEl = document.getElementById('countdown-seconds');
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = galaDate - now;
+
+      if (distance <= 0) {
+        if (daysEl) daysEl.textContent = '00';
+        if (hoursEl) hoursEl.textContent = '00';
+        if (minutesEl) minutesEl.textContent = '00';
+        if (secondsEl) secondsEl.textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+      if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+      if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+      if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
     document.getElementById('sendWhatsAppRSVP').addEventListener('click', () => {
       const name = document.getElementById('guestName').value.trim() || 'Graduado/Invitado';
       const attendance = document.getElementById('guestAttendance').value === 'si' 
@@ -464,8 +747,7 @@
       const tickets = featurePases && !featurePases.classList.contains('hidden') 
         ? ` (${document.getElementById('guestTickets').value} pases requeridos)` 
         : '';
-      
-      const message = `¡Hola! Soy ${name}. ${attendance} para la Gala de Graduación 2026${tickets}.`;
+      const message = `¡Hola! Soy ${name}. ${attendance} para la Gala de Graduación 2026 el 27 de Noviembre${tickets}.`;
       window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
     });
   </script>
